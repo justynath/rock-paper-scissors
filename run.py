@@ -1,4 +1,5 @@
 import random
+import sys
 
 def users_name():
     """
@@ -8,7 +9,7 @@ def users_name():
         try:
             user_name = str(input("Enter your name: "))
             if len(user_name) > 2:
-                print(f"Welcome to the game {user_name}")
+                print(f"Welcome to the game {user_name}\n")
                 break
             else:
                 raise TypeError
@@ -16,9 +17,8 @@ def users_name():
             print("Name must be at least three characters")
             continue
     return user_name
+
 user = users_name()
-
-
 
 def play_game():
 
@@ -50,6 +50,27 @@ def play_game():
             #print('computer wins')
     return user_score, computer_score
 
+def show_instructions():
+    user_score = 0
+    computer_score = 0
+    print("1. Instructions \n2. Play the game \n")
+    instr_choice = int(input("Enter '1' to read the instructions. Enter '2' to start the game: "))
+    if instr_choice == 1:
+        f = open('instructions.txt')
+        lines = f.read()
+        f.close()
+        print(lines)
+        start_game = input("Would you like to play (y/n)?: ").lower()
+        if start_game == 'y':
+            return #play_game()
+        elif start_game == 'n':
+            sys.exit() #print("test")
+    #elif instr_choice == 2:
+        #play_game()
+
+show_instructions()
+user_score, computer_score = play_game()
+
 def display_score():
     print(f"{user} = {user_score} Computer = {computer_score}")
     if user_score > computer_score:
@@ -59,5 +80,4 @@ def display_score():
     else:
         print("It's a tie!")
 
-user_score, computer_score = play_game()
 display_score()

@@ -1,0 +1,16 @@
+
+1. Decide on the number of rounds you want to play.
+2. At the start of each round, the player (you) selects either rock, paper, or scissors.
+3. The computer randomly selects one of rock, paper, or scissors.
+4. Compare the player's choice with the computer's choice according to the traditional rules:
+   - Rock beats scissors
+   - Scissors beats paper
+   - Paper beats rock
+5. The result of each round is stored and added on each time:
+   - Player wins: +1 point to player
+   - Computer wins: +1 point to computer
+   - Tie: No points awarded
+6. Repeat steps 2-6 until the predetermined number of rounds is reached.
+7. Once all rounds are played, determine the overall winner:
+   - The player with the most points wins.
+   - In case of a tie, declare the game as a draw.
