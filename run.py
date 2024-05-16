@@ -28,9 +28,11 @@ def play_game():
     computer_score = 0
 
     for i in range(4):
+        # Validate input. Only allow values in options tupe
         while True:
             print("Round ", i+1)
-            user_choice = input("What's your choice? (rock, paper, scissors): ")
+            # Allow correct values with capital letters and spaces
+            user_choice = input("What's your choice? (rock, paper, scissors): ").lower().strip()
             computer_choice = random.choice(options)
             if user_choice not in options:
                 print(f"{user_choice} is not an option")
