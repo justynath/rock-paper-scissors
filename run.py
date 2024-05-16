@@ -28,28 +28,28 @@ def play_game():
     computer_score = 0
 
     for i in range(4):
-       # while user_choice not in options: # Loops until the user enters correct value
-        print("Round ", i+1)
-        user_choice = input("What's your choice? (rock, paper, scissors): ")
-        computer_choice = random.choice(options)
+        while True:
+            print("Round ", i+1)
+            user_choice = input("What's your choice? (rock, paper, scissors): ")
+            computer_choice = random.choice(options)
+            if user_choice not in options:
+                print(f"{user_choice} is not an option")
+                continue
+            else:
+                break
         print(f"{user}'s choice: {user_choice}")
         print(f"Computer's choice: {computer_choice}")
 
-        if user_choice == computer_choice:
-            print('tie')
-            #i += 1
-        elif (user_choice == 'rock' and computer_choice == 'scissors') or (user_choice == 'paper' and computer_choice == 'rock') or (user_choice == 'scissors' and computer_choice == 'paper'):
+        if (user_choice == 'rock' and computer_choice == 'scissors') or (user_choice == 'paper' and computer_choice == 'rock') or (user_choice == 'scissors' and computer_choice == 'paper'):
             user_score += 1
-            #i += 1
-            print('user wins')
-        else:
+            #print('user wins')
+        elif (user_choice == 'rock' and computer_choice == 'paper') or (user_choice == 'paper' and computer_choice == 'scissors') or (user_choice == 'scissors' and computer_choice == 'rock'):
             computer_score +=1
-            print('computer wins')
-            #i += 1
+            #print('computer wins')
     return user_score, computer_score
 
 def display_score():
-    print(f"{user} = {user_score}\n Computer = {computer_score}")
+    print(f"{user} = {user_score} Computer = {computer_score}")
     if user_score > computer_score:
         print("You win!")
     elif user_score < computer_score:
