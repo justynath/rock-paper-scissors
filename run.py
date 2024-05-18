@@ -20,6 +20,22 @@ def users_name():
 
 user = users_name()
 
+def how_many_rounds():
+    """
+    Function to select how many rounds an user wants to play in one game
+    """
+    while True:
+        try:
+            number_of_rounds = int(input(f"How many times you want to play (max 8)?: "))
+            if 1 <= number_of_rounds <= 8:
+                print(f"You selected {number_of_rounds} rounds")
+                break
+            else:
+                raise ValueError 
+        except ValueError:
+            print("Please enter a number between 1 and 8")
+    return number_of_rounds
+
 def play_game():
     """
     Function to define the game (set number of rounds):
@@ -32,7 +48,9 @@ def play_game():
     user_score = 0
     computer_score = 0
 
-    for i in range(4):
+    rounds = how_many_rounds()
+
+    for i in range(rounds):
         # Validate input. Only allow values in options tupe
         while True:
             print("\nRound ", i+1)
