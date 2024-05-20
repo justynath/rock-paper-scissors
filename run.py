@@ -26,7 +26,7 @@ def users_name():
     """
     while True: # Never ending loop
         try:
-            user_name = str(input("Enter your name: "))
+            user_name = str(input("Enter your name:\n"))
             if len(user_name) > 2:
                 print(f"Welcome to the game {user_name}\n")
                 break
@@ -45,7 +45,7 @@ def how_many_rounds():
     """
     while True:
         try:
-            number_of_rounds = int(input(f"How many times you want to play (max 8)?: "))
+            number_of_rounds = int(input(f"How many times you want to play (max 8)?:\n"))
             if 1 <= number_of_rounds <= 8:
                 print(f"You selected {number_of_rounds} rounds")
                 break
@@ -74,7 +74,7 @@ def play_game():
         while True:
             print("\nRound ", i+1)
             # Allow correct values with capital letters and spaces
-            user_choice = input("What's your choice? (rock, paper, scissors): ").lower().strip()
+            user_choice = input("What's your choice? (rock, paper, scissors):\n").lower().strip()
             computer_choice = random.choice(options)
             if user_choice not in options:
                 print(f"{user_choice} is not an option")
@@ -104,13 +104,13 @@ def show_instructions():
     # Validate input, only allow 1 or 2
     while True:
         try:
-            instr_choice = int(input("Enter '1' to read the instructions. Enter '2' to start the game: "))
+            instr_choice = int(input("Enter '1' to read the instructions. Enter '2' to start the game:\n"))
             if instr_choice == 1:
                 f = open('instructions.txt')
                 lines = f.read()
                 f.close()
                 print(lines)
-                start_game = input("Would you like to play (y/n)?: ").lower()
+                start_game = input("Would you like to play (y/n)?:\n").lower()
                 if start_game == 'y':
                     return
                 elif start_game == 'n':
