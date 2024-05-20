@@ -22,7 +22,7 @@ user = users_name()
 
 def how_many_rounds():
     """
-    Function to select how many rounds an user wants to play in one game
+    Function to select how many rounds a user wants to play in one game
     """
     while True:
         try:
