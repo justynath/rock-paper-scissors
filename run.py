@@ -16,9 +16,9 @@ SHEET = GSPREAD_CLIENT.open('scores_record')
 
 scores = SHEET.worksheet('scores')
 
-data = scores.get_all_values()
+#data = scores.get_all_values()
 
-print(data)
+#print(data)
 
 def users_name():
     """
@@ -110,11 +110,17 @@ def show_instructions():
                 lines = f.read()
                 f.close()
                 print(lines)
-                start_game = input("Would you like to play (y/n)?:\n").lower()
-                if start_game == 'y':
-                    return
-                elif start_game == 'n':
-                    sys.exit() 
+                while True:
+                    try:
+                        start_game = input("Would you like to play (y/n)?:\n").lower()
+                        if start_game == 'y':
+                            return
+                        elif start_game == 'n':
+                            sys.exit() 
+                        else:
+                            raise ValueError
+                    except ValueError:
+                        print("Please select 'y' or 'n' only")
             elif instr_choice == 2:
                 return
             else:
@@ -125,16 +131,54 @@ def show_instructions():
 show_instructions()
 user_score, computer_score = play_game()
 
+
 def display_score():
     """
     Final score is displayed and the winner announced
     """
+    points = 0 #this variable will be used for updating the scores record in google sheet
     print(f"\n{user} = {user_score} Computer = {computer_score}")
     if user_score > computer_score:
         print("You win!")
+        points = 2
     elif user_score < computer_score:
         print("Computer wins!")
+        points = 0
     else:
         print("It's a tie!")
+        points = 1
+
+def update_leader_board(data):
+    """
+    Function to update the scores record in google sheet:
+    - add one to numebr of games played
+    - add two to points if the game is won
+    - add one to points if it is a tie
+    - future: calculate the success rate as percentage
+    """
+    games_played = 1
+    while True:
+        try:
+            add_score = input("Would you like to add your score to the leader_board (y/n)?\n").lower()
+            if add_score == 'y':
+                print("Updating scores record...\n")
+                scores_worksheet = SHEET.worksheet('scores')
+                scores_worksheet.append_row(data)
+                print("Scores worksheet updated successfully.\n")
+                break
+            elif add_score == 'n':
+                return
+            else:
+                raise ValueError
+        except ValueError:
+            print("Please select 'y' or 'n' only")
 
 display_score()
+updated_overall_score = [user,1,2] #this data is to check if it works
+update_leader_board(updated_overall_score) 
+
+def display_overall_score():
+    """
+    Function to display current overall score from the google sheet
+    """
+    #print(f"Your overall score:\n Number of games played: {}\n Number of games won: {}\n Your success rate: {}%")
