@@ -131,7 +131,6 @@ def show_instructions():
 show_instructions()
 user_score, computer_score = play_game()
 
-
 def display_score():
     """
     Final score is displayed and the winner announced
@@ -148,6 +147,8 @@ def display_score():
         print("It's a tie!")
         points = 1
 
+# The code below is still work in progress for updating the google sheet
+
 def update_leader_board(data):
     """
     Function to update the scores record in google sheet:
@@ -156,7 +157,6 @@ def update_leader_board(data):
     - add one to points if it is a tie
     - future: calculate the success rate as percentage
     """
-    games_played = 1
     while True:
         try:
             add_score = input("Would you like to add your score to the leader_board (y/n)?\n").lower()
