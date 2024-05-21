@@ -146,6 +146,7 @@ def display_score():
     else:
         print("It's a tie!")
         points = 1
+    return points
 
 # The code below is still work in progress for updating the google sheet
 
@@ -159,7 +160,7 @@ def update_leader_board(data):
     """
     while True:
         try:
-            add_score = input("Would you like to add your score to the leader_board (y/n)?\n").lower()
+            add_score = input("Would you like to add your score to the overall score record (y/n)?\n").lower()
             if add_score == 'y':
                 print("Updating scores record...\n")
                 scores_worksheet = SHEET.worksheet('scores')
@@ -173,12 +174,25 @@ def update_leader_board(data):
         except ValueError:
             print("Please select 'y' or 'n' only")
 
-display_score()
-updated_overall_score = [user,1,2] #this data is to check if it works
+points = display_score()
+updated_overall_score = [user,1,points] #this data is to check if it works
 update_leader_board(updated_overall_score) 
 
-def display_overall_score():
+def display_overall_score(data):
     """
     Function to display current overall score from the google sheet
     """
+    # Get the headings from the scores worksheet's first row
+    headings = SHEET.worksheet("scores").row_values(1)
+    result = {}  # Initialize an empty dictionary to store the stock values
+
+    # Iterate over the headings and corresponding data values using zip
+    for heading, stock_value in zip(headings, data):
+        # Assign each heading as a key and its corresponding value as the value in the result dictionary
+        result[heading] = stock_value
+
+    # Return the result dictionary containing headings and values
+    return result
+overall_score = display_overall_score(updated_overall_score)
+print(f"Your overall score is:\n {overall_score}")
     #print(f"Your overall score:\n Number of games played: {}\n Number of games won: {}\n Your success rate: {}%")
