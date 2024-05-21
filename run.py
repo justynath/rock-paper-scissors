@@ -13,7 +13,7 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('scores_record')
-NAME_COLUMN = 'scores!A2:' 
+#NAME_COLUMN = 'scores!A2:' 
 
 scores = SHEET.worksheet('scores')
 
@@ -150,8 +150,10 @@ def display_score():
     return points
 
 # The code below is still work in progress for updating the google sheet
-
 def calculate_new_score_row():
+    """
+    Function to calculate the new overall score
+    """
     new_name_row = []
     #names = SHEET.worksheet("scores").column_values(1)
     search_name = user
@@ -165,15 +167,14 @@ def calculate_new_score_row():
             games_played += 1
             points_total = int(name_row[2])
             new_points_total = points_total + points
-            new_name_row = [user, games_played, new_points_total]
+            success_rate = round((new_points_total/(games_played*2))*100)
+            new_name_row = [user, games_played, new_points_total, success_rate]
             print(new_name_row)
             break
     if not found:
-        new_name_row = [user, 1, points]
+        success_rate = round((points/2)*100)
+        new_name_row = [user, 1, points, success_rate]
     return new_name_row
-
-
-
 
 
 def update_scores_record(data):
@@ -186,7 +187,7 @@ def update_scores_record(data):
     """
     while True:
         try:
-            add_score = input("Would you like to add your score to the overall score record (y/n)?\n").lower()
+            add_score = input("Would you like to add your score to the overall score record (y/n)?\n IN ORDER TO GET THE ACCURATE SUCCESS RATE IT IS RECOMMENDED TO ALWAYS UPDATE YOUR SCORE").lower()
             if add_score == 'y':
                 print("Updating scores record...\n")
                 scores_worksheet = SHEET.worksheet('scores')
@@ -194,10 +195,18 @@ def update_scores_record(data):
                 found = False
                 for row in all_data:
                     if search_name in row:
-                        print(row)
+                        #old_row = row
+                        #print(old_row)
                         found = True
-                        # THIS IS NOT WORKING - I NEED TO REPLACE THE ROW WITH THE NAME REPEATING 
-                        scores_worksheet.update_row(data)
+                        # This bit is my greatest acheviement so far. Whatever is my assessemnt result these simpe few lines are my personal distinction for problem solving (no extensive research, no hour with a CI tutor could solve it, just my brain)
+                        cell = scores_worksheet.find(search_name)
+                        cell_string = str(cell)
+                        print(cell_string)
+                        print(cell_string[7])
+                        row_to_update = int(cell_string[7])
+                        scores_worksheet.delete_rows(row_to_update)
+                        scores_worksheet.append_row(data)
+                        #scores_worksheet.append_row(data)
                 if not found:
                     scores_worksheet.append_row(data)
                 print("Scores worksheet updated successfully.\n")
@@ -210,11 +219,20 @@ def update_scores_record(data):
             print("Please select 'y' or 'n' only")
 
 
+        #problem with displaying the final score
+
+        scores = SHEET.worksheet("scores").get_all_values()
+        scores_row = scores[-1]
+        return scores_row
+        print(scores_row)
+
+
 points = display_score()
 
 new_overall_score = calculate_new_score_row()
 
-update_scores_record(new_overall_score) 
+#problem
+updated_score = update_scores_record(new_overall_score) 
 
 
 def display_overall_score(data):
@@ -226,13 +244,14 @@ def display_overall_score(data):
     result = {}  # Initialize an empty dictionary to store the stock values
 
     # Iterate over the headings and corresponding data values using zip
-    for heading, stock_value in zip(headings, data):
+    for heading, scores_value in zip(headings, data):
         # Assign each heading as a key and its corresponding value as the value in the result dictionary
-        result[heading] = stock_value
+        result[heading] = scores_value
 
     # Return the result dictionary containing headings and values
     return result
 
-overall_score = display_overall_score(new_overall_score)
+#problem
+overall_score = display_overall_score(updated_score)
 print(f"Your overall score is:\n {overall_score}")
     #print(f"Your overall score:\n Number of games played: {}\n Number of games won: {}\n Your success rate: {}%")
