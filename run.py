@@ -163,7 +163,7 @@ def calculate_new_score_row():
         # Check if the name already exists and find the row
         if user in row:
             name_row = row
-            print('Found:', name_row) #testing
+            #print('Found:', name_row) #testing
             found = True
             # Calculate new values for the worksheet: add one to games played, add 'points' to poits column, calculate new success rate
             games_played = int(name_row[1])
@@ -172,7 +172,7 @@ def calculate_new_score_row():
             new_points_total = points_total + points
             success_rate = round((new_points_total/(games_played*2))*100)
             new_name_row = [user, games_played, new_points_total, success_rate]
-            print(new_name_row) #testing
+            #print(new_name_row) #testing
             break
     if not found:
         success_rate = round((points/2)*100)
@@ -206,7 +206,7 @@ def update_scores_record(data):
                         # Remove the part from 'c' until the end. 
                         # This two step method allows returning an integer with any number of digits
                         find_row_num = int(split_cell.rsplit('C')[0])
-                        print(find_row_num) #testing
+                        #print(find_row_num) #testing
                         # Delete the existing row and add new row with he new data
                         scores_worksheet.delete_rows(find_row_num)
                         scores_worksheet.append_row(data)
@@ -220,14 +220,6 @@ def update_scores_record(data):
                 raise ValueError
         except ValueError:
             print("Please select 'y' or 'n' only")
-        #return updated_score # Do I need this
-        # Do I need this
-        '''
-        scores = SHEET.worksheet("scores").get_all_values()
-        scores_row = scores[-1]
-        return scores_row
-        print(scores_row) #testing
-        '''
 
 def display_overall_score():
     """
@@ -239,9 +231,9 @@ def display_overall_score():
     cell_string = str(cell)  
     split_cell = str(cell_string.split('<Cell R')[1])
     find_row_num = int(split_cell.rsplit('C')[0])
-    print(find_row_num)
+    #print(find_row_num) #testing
     row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
-    print(row_with_score)
+    #print(row_with_score) #testing
     result = {}  # Initialize an empty dictionary to store the stock values
     # Iterate over the headings and corresponding data values using zip
     for heading, scores_value in zip(headings, row_with_score):
