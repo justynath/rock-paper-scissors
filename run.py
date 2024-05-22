@@ -1,5 +1,4 @@
 import random
-import sys
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -121,7 +120,8 @@ def show_instructions():
                         if start_game == 'y':
                             return
                         elif start_game == 'n':
-                            sys.exit() 
+                            print('Bye')
+                            quit() 
                         else:
                             raise ValueError
                     except ValueError:
@@ -256,11 +256,5 @@ new_overall_score = calculate_new_score_row()
 updated_score = update_scores_record(new_overall_score) 
 overall_score = display_overall_score()
 print(f"Your overall score is:\n {overall_score}")
-
-exit = input("Thank you for playing.\nWould you like to play again (y/n)?\n").lower()
-if exit == 'y':
-    print("Click 'Start Game' on the top of this page")
-if exit == 'n':
-    print("Bye")
-    quit() 
-    
+print("\nThank you for playing\nClick 'Start Game' on the top of this page to play again")
+quit()
