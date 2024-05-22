@@ -18,6 +18,7 @@ SHEET = GSPREAD_CLIENT.open('scores_record')
 scores = SHEET.worksheet('scores')
 
 all_data = scores.get_all_values()
+scores_worksheet = SHEET.worksheet('scores')
 
 #print(data)
 
@@ -187,10 +188,9 @@ def update_scores_record(data):
     """
     while True:
         try:
-            add_score = input("Would you like to add your score to the overall score record (y/n)?\n IN ORDER TO GET THE ACCURATE SUCCESS RATE IT IS RECOMMENDED TO ALWAYS UPDATE YOUR SCORE").lower()
+            add_score = input("Would you like to add your score to the overall score record (y/n)?\nIN ORDER TO GET THE ACCURATE SUCCESS RATE IT IS RECOMMENDED TO ALWAYS UPDATE YOUR SCORE ").lower()
             if add_score == 'y':
                 print("Updating scores record...\n")
-                scores_worksheet = SHEET.worksheet('scores')
                 search_name = user
                 found = False
                 for row in all_data:
@@ -201,14 +201,22 @@ def update_scores_record(data):
                         # This bit is my greatest acheviement so far. Whatever is my assessemnt result these simpe few lines are my personal distinction for problem solving (no extensive research, no hour with a CI tutor could solve it, just my brain)
                         cell = scores_worksheet.find(search_name)
                         cell_string = str(cell)
-                        print(cell_string)
-                        print(cell_string[7])
-                        row_to_update = int(cell_string[7])
-                        scores_worksheet.delete_rows(row_to_update)
+            
+                        split_cell = str(cell_string.split('<Cell R')[1])
+                        find_row_num = int(split_cell.rsplit('C')[0])
+
+                        print(find_row_num)
+
+
+                        #print(cell_string[7:'C'])
+                        #row_to_update = int(cell_string[7:'C'])
+                        scores_worksheet.delete_rows(find_row_num)
                         scores_worksheet.append_row(data)
+                        #updated_score = data
                         #scores_worksheet.append_row(data)
                 if not found:
                     scores_worksheet.append_row(data)
+                    #updated_score = data
                 print("Scores worksheet updated successfully.\n")
                 break
             elif add_score == 'n':
@@ -217,6 +225,7 @@ def update_scores_record(data):
                 raise ValueError
         except ValueError:
             print("Please select 'y' or 'n' only")
+        return updated_score
 
 
         #problem with displaying the final score
@@ -235,16 +244,29 @@ new_overall_score = calculate_new_score_row()
 updated_score = update_scores_record(new_overall_score) 
 
 
-def display_overall_score(data):
+def display_overall_score():
     """
     Function to display current overall score from the google sheet
     """
     # Get the headings from the scores worksheet's first row
     headings = SHEET.worksheet("scores").row_values(1)
+
+
+    cell = scores_worksheet.find(user)
+    cell_string = str(cell)
+            
+    split_cell = str(cell_string.split('<Cell R')[1])
+    find_row_num = int(split_cell.rsplit('C')[0])
+
+    print(find_row_num)
+
+
+    row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
+    print(row_with_score)
     result = {}  # Initialize an empty dictionary to store the stock values
 
     # Iterate over the headings and corresponding data values using zip
-    for heading, scores_value in zip(headings, data):
+    for heading, scores_value in zip(headings, row_with_score):
         # Assign each heading as a key and its corresponding value as the value in the result dictionary
         result[heading] = scores_value
 
@@ -252,6 +274,6 @@ def display_overall_score(data):
     return result
 
 #problem
-overall_score = display_overall_score(updated_score)
+overall_score = display_overall_score()
 print(f"Your overall score is:\n {overall_score}")
     #print(f"Your overall score:\n Number of games played: {}\n Number of games won: {}\n Your success rate: {}%")
