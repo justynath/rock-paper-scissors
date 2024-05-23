@@ -1,6 +1,8 @@
 import random
 import gspread
 from google.oauth2.service_account import Credentials
+import colorama
+from colorama import Fore
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -23,16 +25,18 @@ def users_name():
     """
     Enter the user's name and validate the input with exception handling
     """
+    print(f"{Fore.BLUE}R O C K\nP A P E R\nS C I S S O R S\n")
+
     while True:
         try:
-            user_name = str(input("Enter your name:\n"))
+            user_name = str(input(f"{Fore.WHITE}Enter your name:\n{Fore.YELLOW}"))
             if len(user_name) > 2:
-                print(f"Welcome to the game {user_name}\n")
+                print(f"\n{Fore.WHITE}Welcome to the game {Fore.YELLOW}{user_name}\n")
                 break
             else:
                 raise TypeError
         except TypeError:
-            print("Name must be at least three characters")
+            print(f"{Fore.RED}Name must be at least three characters")
             continue
     return user_name
 
@@ -46,14 +50,14 @@ def how_many_rounds():
     """
     while True:
         try:
-            number_of_rounds = int(input(f"How many times you want to play (max 8)?:\n"))
+            number_of_rounds = int(input(f"\n{Fore.WHITE}How many times you want to play (max 8)?:\n{Fore.YELLOW}"))
             if 1 <= number_of_rounds <= 8:
-                print(f"You selected {number_of_rounds} rounds")
+                print(f"{Fore.WHITE}You selected {Fore.YELLOW}{number_of_rounds} {Fore.WHITE}rounds")
                 break
             else:
                 raise ValueError
         except ValueError:
-            print("Please enter a number between 1 and 8")
+            print(f"{Fore.RED}Please enter a number between 1 and 8")
     return number_of_rounds
 
 
@@ -74,18 +78,18 @@ def play_game():
     for i in range(rounds):
         # Validate input. Only allow values in options tuple
         while True:
-            print("\nRound ", i+1)
+            print(f"\n{Fore.BLUE}Round ", i+1)
             # Allow correct values with capital letters and spaces
-            user_choice = input("What's your choice? (rock, paper, scissors):\n").lower().strip()
+            user_choice = input(f"{Fore.WHITE}What's your choice? (rock, paper, scissors):\n{Fore.YELLOW}").lower().strip()
             computer_choice = random.choice(options)
             if user_choice not in options:
-                print(f"{user_choice} is not an option")
+                print(f"{Fore.RED}{user_choice} is not an option")
                 continue
             else:
                 break
 
-        print(f"{user}'s choice: {user_choice}")
-        print(f"Computer's choice: {computer_choice}")
+        print(f"{Fore.YELLOW}{user}{Fore.WHITE}'s choice: {Fore.YELLOW}{user_choice}")
+        print(f"{Fore.WHITE}Computer's choice: {Fore.GREEN}{computer_choice}")
 
         if (user_choice == 'rock' and computer_choice == 'scissors') or (user_choice == 'paper' and computer_choice == 'rock') or (user_choice == 'scissors' and computer_choice == 'paper'):
             user_score += 1
@@ -102,36 +106,36 @@ def show_instructions():
     """
     user_score = 0
     computer_score = 0
-    print("1. Instructions \n2. Play the game \n")
+    print(f"{Fore.WHITE}1. Instructions \n2. Play the game \n")
     # Validate input, only allow 1 or 2
     while True:
         try:
-            instr_choice = int(input("Enter '1' to read the instructions. Enter '2' to start the game:\n"))
+            instr_choice = int(input(f"Enter '1' to read the instructions. Enter '2' to start the game:\n{Fore.YELLOW}"))
             if instr_choice == 1:
                 # Get text from the file and display
                 f = open('instructions.txt')
                 lines = f.read()
                 f.close()
-                print(lines)
+                print(f"{Fore.BLUE}{lines}")
                 while True:
                     try:
                         # Reconfirm with the user if they want to proceed
-                        start_game = input("Would you like to play (y/n)?:\n").lower()
+                        start_game = input(f"{Fore.WHITE}Would you like to play (y/n)?:\n{Fore.YELLOW}").lower()
                         if start_game == 'y':
                             return
                         elif start_game == 'n':
-                            print('Bye')
+                            print(f"{Fore.BLUE}Bye")
                             quit()
                         else:
                             raise ValueError
                     except ValueError:
-                        print("Please select 'y' or 'n' only")
+                        print(f"{Fore.RED}Please select 'y' or 'n' only")
             elif instr_choice == 2:
                 return
             else:
                 raise ValueError
         except ValueError:
-            print("Please select '1' or '2' only")
+            print(f"{Fore.RED}Please select '1' or '2' only")
 
 
 def display_score():
@@ -139,16 +143,16 @@ def display_score():
     Final score is displayed and the winner announced
     """
     points = 0  # This variable will be used for updating the scores record in google sheet
-    print(f"\n{user} = {user_score} Computer = {computer_score}")
+    print(f"\n{Fore.YELLOW}{user} {Fore.WHITE}= {Fore.YELLOW}{user_score} {Fore.WHITE}\nComputer = {Fore.GREEN}{computer_score}")
     if user_score > computer_score:
-        print("You win!")
+        print(f"\n{Fore.YELLOW}You win!\n")
         points = 2
     elif user_score < computer_score:
-        print("Computer wins!")
+        print(f"\n{Fore.GREEN}Computer wins!\n")
         points = 0
     else:
-        print("It's a tie!")
-        points = 1
+        print(f"\n{Fore.WHITE}It's a tie!\n")
+        points = 1y
     return points
 
 
@@ -193,14 +197,14 @@ def update_scores_record(data):
     """
     while True:
         try:
-            add_score = input("IN ORDER TO GET THE ACCURATE SUCCESS RATE IT IS RECOMMENDED TO ALWAYS UPDATE YOUR SCORE \nWould you like to add your score to the overall score record (y/n)?\n").lower()
+            print(f"{Fore.RED}IN ORDER TO GET THE ACCURATE SUCCESS RATE IT IS RECOMMENDED TO ALWAYS UPDATE YOUR SCORE\n")
+            add_score = input(f"{Fore.WHITE}Would you like to proceed with updating your overall score record (y/n)?\n{Fore.YELLOW}").lower()
             if add_score == 'y':
-                print("Updating scores record...\n")
+                print(f"\n{Fore.WHITE}Updating scores record...\n")
                 found = False
                 for row in all_data:
                     if user in row:
                         found = True
-                        # This bit is my greatest acheviement so far. Whatever is my assessemnt result these simpe few lines are my personal distinction for problem solving (no extensive research, no hour with a CI tutor could solve it, just my brain)
                         # Find the cell where the existing name is and convert the answer to a string
                         cell = scores_worksheet.find(user)
                         cell_string = str(cell)
@@ -215,14 +219,14 @@ def update_scores_record(data):
                         scores_worksheet.append_row(data)
                 if not found:
                     scores_worksheet.append_row(data)
-                print("Scores worksheet updated successfully.\n")
+                print(f"{Fore.WHITE}Scores worksheet updated successfully.\n")
                 break
             elif add_score == 'n':
                 return
             else:
                 raise ValueError
         except ValueError:
-            print("Please select 'y' or 'n' only")
+            print(f"{Fore.RED}Please select 'y' or 'n' only")
 
 
 def display_overall_score():
@@ -252,6 +256,6 @@ points = display_score()
 new_overall_score = calculate_new_score_row()
 updated_score = update_scores_record(new_overall_score)
 overall_score = display_overall_score()
-print(f"Your overall score is:\n {overall_score}")
-print("\nThank you for playing\nClick 'Start Game' on the top of this page to play again")
+print(f"Your overall score is:\n {Fore.YELLOW}{overall_score}")
+print(f"\n{Fore.WHITE}Thank you for playing\nClick {Fore.BLUE}'Start Game' {Fore.WHITE}on the top of this page to play again")
 quit()
