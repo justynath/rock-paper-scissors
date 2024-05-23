@@ -5,7 +5,7 @@
 
 This is an implementation of the classic Rock Paper Scissors game in Python. The aim of the game is to beat the computer by choosing a gesture that defeats its choice based on the following rules: Rock crushes Scissors, Scissors cuts Paper, and Paper covers Rock. The game prompts the player to enter their choice and then randomly generates the computer's choice. It then compares both choices to determine the winner and displays the result. The player can play multiple rounds within one game and keep record of their scores as well as see their success rate of winning the game.
 
-UPDATE [live site](https://justynath.github.io/landmarks-quiz/)
+[live site](https://rock-paper-scissors-jth-58f83fceca79.herokuapp.com/)
 
 UPDATE ![Am I Responsive](./assets/readme-resources/am-i-responsive.png)
 
@@ -20,7 +20,6 @@ UPDATE ![Am I Responsive](./assets/readme-resources/am-i-responsive.png)
         - [**Flowchart**](#flowchart)
         - [**Design Choices**](#design-choices)
 4. [**Features**](#features)
-    - [**Welcome Screen**](#welcome-screen)
 5. [**Future Features**](#future-features)
 6. [**Technologies**](#technologies)
 7. [**Testing**](#testing)
@@ -64,21 +63,47 @@ UPDATE
 #### Flowchart <a name="flowchart"></a>
 
 #### Design Choices <a name="design-choices"></a>
+Due to this program being built for terminal use, there was limited design options. I used basic keyboard letters with different colours from Colorama.
 
 ---
 
 ## Features <a name="features"></a>
 UPDATE
 
-### Welcome Screen <a name="welcome-screen"></a>
-On the welcome screen the user is asked to enter their name 
-UPDATE ![welcome page](./assets/readme-resources/welcome-page.png)
+**Welcome Screen**
+On the welcome screen the title of th egame is displayed and the user is asked to enter their name 
+UPDATE ![welcome screen](./assets/readme-resources/welcome-page.png)
+
+**Reading instructions option**
+The user has an option to read the instructions or start the game. After the instructions are desplayed the user can chose to play or quit.
+UPDATE ![instructions](./assets/readme-resources/welcome-page.png)
+
+**Start Game**
+The user is asked to chose how many rounds they want to play this game.
+UPDATE ![choose rounds](./assets/readme-resources/welcome-page.png)
+
+**Play Game**
+The user is asked to select option. The user's option and computer optio are displayed. Repeats until selected number of rounds
+UPDATE ![instructions](./assets/readme-resources/welcome-page.png)
+
+**Finish Game**
+End of game. The winner is announced and the user is promped to update their score. It is important to update it each time they play so the success rate is accuratly calculated.
+UPDATE ![gameover](./assets/readme-resources/welcome-page.png)
+
+**Display current score**
+The current score including the success rate is displayed
+UPDATE ![display score](./assets/readme-resources/welcome-page.png)
+
+**Play Again**
+The user is asked if they want to play again
+UPDATE ![instructions](./assets/readme-resources/welcome-page.png)
+
 
 ## Future Features <a name="future-features"></a>
-UPDATE
 While the current version of the project is fully functional, I have some exciting features planned for future updates. Here are a few ideas that I didn't have time to implement in this release:
 
 - Login system for keeping accurate scores record
+- Giving more options after playing the game
 
 ---
 
@@ -96,13 +121,10 @@ UPDATE
 
 ### Manual Features Testing <a name="features-testing"></a>
 
-|  Feature |  Action | Effect |
-|---|---|---|
-|Start Quiz button|Click|Displays the first question|
-|Next button|Click|Displays the next question|
-|Try Again button|Click|Starts the quiz and displays the first question|
-|Github link in the footer|Click|Opens the github repository in new tab|
-|Linkedin link in the footer|Click|Opens the Linkedin profile in new tab|
+| Section Tested | Input To Validate | Expected Outcome | Actual Outcome | Pass/Fail |
+| -------------- | ----------------- | ---------------- | -------------- | --------- |
+| Welcome screen |  |  | As expected | Pass |
+
 
 ### Bugs Resolved <a name="bugs"></a>
 
@@ -114,41 +136,39 @@ Below is a summary of resolved bugs:
 
 | Bug ID | Bug Description | Status |
 |--------|-----------------|--------|
-| #001   | After adding welcome page, the 'Start Quiz' button not working correctly | Resolved |
-| #002   | The background on feedback page is not changing colour | Resolved |
-| #003   | The background colour not reseting for first question | Resolved |
+| #001   |  | Resolved |
+| #002   |  | Resolved |
+| #003   |  | Resolved |
 
 **Bug Details**
 Here are the details of the resolved bugs:
 
 **Bug #001**
-- **Description**:  After I added the welcome page the 'Start Quiz' button was not working correctly (Jumping to question two, then repeating that question in a loop)
-- **Resolution**: I removed the original event listener and added a new one to correctly respond to the 'Start Quiz' button
-- **Impact**: Including a welcoming page gives more information about the quiz and allows the user to make decision about taking the quiz
+- **Description**:  
+- **Resolution**: 
+- **Impact**: 
 
-**Bug #002**
-- **Description**:  The background of the feedback page was not changing despite assigning a variable and getting element by class name
-- **Resolution**: The element by class name is returned as an array, hence I needed to use indexing to return the first element
-- **Impact**: When the colour of the background changes based on the score it give instant feedback to the user
-
-**Bug #003**
-- **Description**:  After taking the quiz for the second time the background of the first question was not reseting
-- **Resolution**: I included if/else method in the startQuiz function to reset the background
-- **Impact**: The user is reassured that the quiz has restarted and the previous score has been reset
 
 ### Python Validator Testing <a name="validator-testing"></a>
 
 I validated my files using Code Institute's Python Linter
 
-UPDATE ![python validator](./assets/readme-resources/validator-html.png)
+[python validator](./readme-files/validator.png)
 
 ---
 
 ## Deployment <a name="deployment"></a>
 
-UPDATE
+1. Cleate Heroku account
+2. Create new app
+3. In Settings
+    - Open Reveal Config Vars and add: CREDS as KEY, copy the content of creds.json into VALUE; PORT as KEY and 8000 as VALUE
+    - Open Buildpacks and add: Python, nodejs
+4. In Deploy
+    - Connect to GitHub and search for repository, then connect
+    - Diploy Branch, main branck is selected for deployment
 
-UPDATE The live link can be found here - [live site](https://justynath.github.io/landmarks-quiz/)
+The live link can be found here - [live site](https://rock-paper-scissors-jth-58f83fceca79.herokuapp.com/)
 
 ---
 
