@@ -152,7 +152,7 @@ def display_score():
         points = 0
     else:
         print(f"\n{Fore.WHITE}It's a tie!\n")
-        points = 1y
+        points = 1
     return points
 
 
