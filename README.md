@@ -76,27 +76,27 @@ UPDATE ![welcome screen](./assets/readme-resources/welcome-page.png)
 
 **Reading instructions option**
 The user has an option to read the instructions or start the game. After the instructions are desplayed the user can chose to play or quit.
-UPDATE ![instructions](./assets/readme-resources/welcome-page.png)
+![instructions](./assets/readme-resources/welcome-page.png)
 
 **Start Game**
 The user is asked to chose how many rounds they want to play this game.
-UPDATE ![choose rounds](./assets/readme-resources/welcome-page.png)
+![choose rounds](./assets/readme-resources/welcome-page.png)
 
 **Play Game**
 The user is asked to select option. The user's option and computer optio are displayed. Repeats until selected number of rounds
-UPDATE ![instructions](./assets/readme-resources/welcome-page.png)
+![instructions](./assets/readme-resources/welcome-page.png)
 
 **Finish Game**
 End of game. The winner is announced and the user is promped to update their score. It is important to update it each time they play so the success rate is accuratly calculated.
-UPDATE ![gameover](./assets/readme-resources/welcome-page.png)
+![gameover](./assets/readme-resources/welcome-page.png)
 
 **Display current score**
 The current score including the success rate is displayed
-UPDATE ![display score](./assets/readme-resources/welcome-page.png)
+![display score](./assets/readme-resources/welcome-page.png)
 
 **Play Again**
 The user is asked if they want to play again
-UPDATE ![instructions](./assets/readme-resources/welcome-page.png)
+![instructions](./assets/readme-resources/welcome-page.png)
 
 
 ## Future Features <a name="future-features"></a>
@@ -117,7 +117,6 @@ While the current version of the project is fully functional, I have some exciti
 ---
 
 ## Testing <a name="testing"></a>
-UPDATE
 
 ### Manual Features Testing <a name="features-testing"></a>
 
@@ -159,7 +158,8 @@ I validated my files using Code Institute's Python Linter
 
 ## Deployment <a name="deployment"></a>
 
-1. Cleate Heroku account
+Before deployment type pip3 freeze > requirements.txt for Heroku to install dependencies
+1. Cleate/set up/open Heroku account
 2. Create new app
 3. In Settings
     - Open Reveal Config Vars and add: CREDS as KEY, copy the content of creds.json into VALUE; PORT as KEY and 8000 as VALUE
@@ -173,20 +173,9 @@ The live link can be found here - [live site](https://rock-paper-scissors-jth-58
 ---
 
 ## Credits  <a name="credits"></a>
-UPDATE
 
-### Content <a name="content"></a>
-- The fonts were imported from [Google Fonts](https://fonts.google.com/)
-- The icons used were taken from [Font Awesome](https://fontawesome.com/)
-- The colour scheme was inspired by this [article](https://muffingroup.com/blog/calm-color-palette/)
-- I used this video tutiorial to set the structure of my quiz [JavaScript Quiz Tutorial](https://www.youtube.com/watch?v=PBcqGxrr9g8)
-- I used chatGTP to reaserch information about the landmarks. The text content was written by me and enhanced by ChatGTP
-- I used this article and my mentor's support for creating the shuffle function [article](https://medium.com/@omar.rashid2/fisher-yates-shuffle-a2aa15578d2f)
+**Content**
 
-
-### Media <a name="media"></a>
-- I used images from this website [images](https://www.jetpunk.com/quizzes/landmarks-quiz-1)
-
-### Anknowledgements <a name="anknowledgements"></a>
+**Anknowledgements** <a name="anknowledgements"></a>**
 - Medale Oluwafemi, my mentor at Code Institute for his guidance and invaluable support with this project
 - Tutor support at Code Institute for assisting me with solving problems and fixing bugs and errors
