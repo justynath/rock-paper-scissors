@@ -12,14 +12,12 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('scores_record')
-#NAME_COLUMN = 'scores!A2:' 
 
 scores = SHEET.worksheet('scores')
 
 all_data = scores.get_all_values()
 scores_worksheet = SHEET.worksheet('scores')
 
-#print(data)
 
 def users_name():
     """
@@ -38,7 +36,9 @@ def users_name():
             continue
     return user_name
 
+
 user = users_name()
+
 
 def how_many_rounds():
     """
@@ -51,10 +51,11 @@ def how_many_rounds():
                 print(f"You selected {number_of_rounds} rounds")
                 break
             else:
-                raise ValueError 
+                raise ValueError
         except ValueError:
             print("Please enter a number between 1 and 8")
     return number_of_rounds
+
 
 def play_game():
     """
@@ -63,7 +64,7 @@ def play_game():
     - chioces are compared
     - score incremented for the winner of the round
     """
-    options = ('rock', 'paper', 'scissors') # Tuple used as these are not being changes, uses less memory than list
+    options = ('rock', 'paper', 'scissors')
     user_choice = None
     user_score = 0
     computer_score = 0
@@ -88,11 +89,10 @@ def play_game():
 
         if (user_choice == 'rock' and computer_choice == 'scissors') or (user_choice == 'paper' and computer_choice == 'rock') or (user_choice == 'scissors' and computer_choice == 'paper'):
             user_score += 1
-            #print('user wins')
         elif (user_choice == 'rock' and computer_choice == 'paper') or (user_choice == 'paper' and computer_choice == 'scissors') or (user_choice == 'scissors' and computer_choice == 'rock'):
-            computer_score +=1
-            #print('computer wins')
+            computer_score += 1
     return user_score, computer_score
+
 
 def show_instructions():
     """
@@ -115,13 +115,13 @@ def show_instructions():
                 print(lines)
                 while True:
                     try:
-                        # Reconfirm with the user if they want to proceed 
+                        # Reconfirm with the user if they want to proceed
                         start_game = input("Would you like to play (y/n)?:\n").lower()
                         if start_game == 'y':
                             return
                         elif start_game == 'n':
                             print('Bye')
-                            quit() 
+                            quit()
                         else:
                             raise ValueError
                     except ValueError:
@@ -133,11 +133,12 @@ def show_instructions():
         except ValueError:
             print("Please select '1' or '2' only")
 
+
 def display_score():
     """
     Final score is displayed and the winner announced
     """
-    points = 0 #this variable will be used for updating the scores record in google sheet
+    points = 0  # This variable will be used for updating the scores record in google sheet
     print(f"\n{user} = {user_score} Computer = {computer_score}")
     if user_score > computer_score:
         print("You win!")
@@ -150,8 +151,10 @@ def display_score():
         points = 1
     return points
 
+
 show_instructions()
 user_score, computer_score = play_game()
+
 
 def calculate_new_score_row():
     """
@@ -163,7 +166,7 @@ def calculate_new_score_row():
         # Check if the name already exists and find the row
         if user in row:
             name_row = row
-            #print('Found:', name_row) #testing
+            # print('Found:', name_row) #testing
             found = True
             # Calculate new values for the worksheet: add one to games played, add 'points' to poits column, calculate new success rate
             games_played = int(name_row[1])
@@ -172,7 +175,7 @@ def calculate_new_score_row():
             new_points_total = points_total + points
             success_rate = round((new_points_total/(games_played*2))*100)
             new_name_row = [user, games_played, new_points_total, success_rate]
-            #print(new_name_row) #testing
+            # print(new_name_row) #testing
             break
     if not found:
         success_rate = round((points/2)*100)
@@ -203,10 +206,10 @@ def update_scores_record(data):
                         cell_string = str(cell)
                         # Remove the part up to the row number
                         split_cell = str(cell_string.split('<Cell R')[1])
-                        # Remove the part from 'c' until the end. 
+                        # Remove the part from 'c' until the end.
                         # This two step method allows returning an integer with any number of digits
                         find_row_num = int(split_cell.rsplit('C')[0])
-                        #print(find_row_num) #testing
+                        # print(find_row_num) #testing
                         # Delete the existing row and add new row with he new data
                         scores_worksheet.delete_rows(find_row_num)
                         scores_worksheet.append_row(data)
@@ -221,6 +224,7 @@ def update_scores_record(data):
         except ValueError:
             print("Please select 'y' or 'n' only")
 
+
 def display_overall_score():
     """
     Function to display current overall score from the google sheet
@@ -228,12 +232,12 @@ def display_overall_score():
     # Get the headings from the scores worksheet's first row
     headings = SHEET.worksheet("scores").row_values(1)
     cell = scores_worksheet.find(user)
-    cell_string = str(cell)  
+    cell_string = str(cell)
     split_cell = str(cell_string.split('<Cell R')[1])
     find_row_num = int(split_cell.rsplit('C')[0])
-    #print(find_row_num) #testing
+    # print(find_row_num) #testing
     row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
-    #print(row_with_score) #testing
+    # print(row_with_score) #testing
     result = {}  # Initialize an empty dictionary to store the stock values
     # Iterate over the headings and corresponding data values using zip
     for heading, scores_value in zip(headings, row_with_score):
@@ -243,9 +247,10 @@ def display_overall_score():
     # Return the result dictionary containing headings and values
     return result
 
+
 points = display_score()
 new_overall_score = calculate_new_score_row()
-updated_score = update_scores_record(new_overall_score) 
+updated_score = update_scores_record(new_overall_score)
 overall_score = display_overall_score()
 print(f"Your overall score is:\n {overall_score}")
 print("\nThank you for playing\nClick 'Start Game' on the top of this page to play again")
