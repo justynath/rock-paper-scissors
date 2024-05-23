@@ -7,7 +7,7 @@ This is an implementation of the classic Rock Paper Scissors game in Python. The
 
 [live site](https://rock-paper-scissors-jth-58f83fceca79.herokuapp.com/)
 
-UPDATE ![Am I Responsive](./assets/readme-resources/am-i-responsive.png)
+![Am I Responsive](./assets/readme-resources/am-i-responsive.png)
 
 ## Table of Contents
 1. [**Overview**](#overview) 
@@ -17,8 +17,6 @@ UPDATE ![Am I Responsive](./assets/readme-resources/am-i-responsive.png)
 3. [**UX**](#ux)
     - [**User Stories**](#user-stories)
     - [**Design**](#design)
-        - [**Flowchart**](#flowchart)
-        - [**Design Choices**](#design-choices)
 4. [**Features**](#features)
 5. [**Future Features**](#future-features)
 6. [**Technologies**](#technologies)
@@ -28,9 +26,6 @@ UPDATE ![Am I Responsive](./assets/readme-resources/am-i-responsive.png)
     - [**Python Validator Testing**](#validator-testing)
 8.  [**Deployment**](#deployment)
 9.  [**Credits**](#credits)
-    - [**Content**](#content)
-    - [**Media**](#media)
-    - [**Anknowledgements**](#anknowledgements)
 
 ---
 
@@ -58,17 +53,15 @@ The targeted audience for the Rock Paper Scissors game includes casual gamers lo
 - As a user, I want clear instructions and feedback throughout the game to enhance my playing experience.
 
 ### Design <a name="design"></a>
-UPDATE
 
-#### Flowchart <a name="flowchart"></a>
+**Flowchart**
 
-#### Design Choices <a name="design-choices"></a>
+**Design Choices**
 Due to this program being built for terminal use, there was limited design options. I used basic keyboard letters with different colours from Colorama.
 
 ---
 
 ## Features <a name="features"></a>
-UPDATE
 
 **Welcome Screen**
 On the welcome screen the title of th egame is displayed and the user is asked to enter their name 
@@ -108,11 +101,11 @@ While the current version of the project is fully functional, I have some exciti
 ---
 
 ## Technologies <a name="technologies"></a>
-1. Python: The program was written entirely in Python.
-2. Github: Used to store the project's code after being pushed from Git.
-3. Gitpod: The terminal was used to commit my code and push it to Github.
-4. Git: Was used for version control through the vscode terminal.
-5. Heroku: Used to deploy, manage, and scale my application.
+- Python: The program was written entirely in Python.
+- Github: Used to store the project's code after being pushed from Git.
+- Gitpod: The terminal was used to commit my code and push it to Github.
+- Git: Was used for version control through the vscode terminal.
+- Heroku: Used to deploy, manage, and scale my application.
 
 ---
 
@@ -152,7 +145,7 @@ Here are the details of the resolved bugs:
 
 I validated my files using Code Institute's Python Linter
 
-[python validator](./readme-files/validator.png)
+![python validator](./readme-files/validator.png)
 
 ---
 
@@ -167,8 +160,9 @@ Before deployment type pip3 freeze > requirements.txt for Heroku to install depe
 4. In Deploy
     - Connect to GitHub and search for repository, then connect
     - Diploy Branch, main branck is selected for deployment
+5. Click view to see the deployed app
 
-The live link can be found here - [live site](https://rock-paper-scissors-jth-58f83fceca79.herokuapp.com/)
+[live site](https://rock-paper-scissors-jth-58f83fceca79.herokuapp.com/)
 
 ---
 
