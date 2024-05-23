@@ -1,7 +1,8 @@
 # Rock Paper Scissors
+---
 
 ## Overview <a name="overview"></a>
----
+
 This is an implementation of the classic Rock Paper Scissors game in Python. The aim of the game is to beat the computer by choosing a gesture that defeats its choice based on the following rules: Rock crushes Scissors, Scissors cuts Paper, and Paper covers Rock. The game prompts the player to enter their choice and then randomly generates the computer's choice. It then compares both choices to determine the winner and displays the result. The player can play multiple rounds within one game and keep record of their scores as well as see their success rate of winning the game.
 
 UPDATE [live site](https://justynath.github.io/landmarks-quiz/)
@@ -18,12 +19,9 @@ UPDATE ![Am I Responsive](./assets/readme-resources/am-i-responsive.png)
     - [**Design**](#design)
         - [**Flowchart**](#flowchart)
         - [**Design Choices**](#design-choices)
-
 4. [**Features**](#features)
     - [**Welcome Screen**](#welcome-screen)
 5. [**Future Features**](#future-features)
-
-
 6. [**Technologies**](#technologies)
 7. [**Testing**](#testing)
     - [**Manual Features testing**](#features-testing) 
@@ -35,7 +33,7 @@ UPDATE ![Am I Responsive](./assets/readme-resources/am-i-responsive.png)
     - [**Media**](#media)
     - [**Anknowledgements**](#anknowledgements)
 
-
+---
 
 ## Planning <a name="planning"></a>
 
@@ -45,9 +43,8 @@ The aim of creating the Rock Paper Scissors game in Python for a user is to offe
 ### Targeted Audience <a name="targeted-audience"></a>
 The targeted audience for the Rock Paper Scissors game includes casual gamers looking for quick entertainment. It is great for individuals interested in classic games and those who enjoy small, interactive applications that can be played in short bursts. The game appeals to a broad range of ages and skill levels, making it accessible and enjoyable for anyone with a few minutes to spare.
 
-
-
 ---
+
 ## UX <a name="ux"></a>
 
 ### User Stories <a name="user-stories"></a>
@@ -62,21 +59,23 @@ The targeted audience for the Rock Paper Scissors game includes casual gamers lo
 - As a user, I want clear instructions and feedback throughout the game to enhance my playing experience.
 
 ### Design <a name="design"></a>
-#### Flowchart <a name="flowchart"></a>
-#### Design Choices <a name="design-choices"></a>
+UPDATE
 
+#### Flowchart <a name="flowchart"></a>
+
+#### Design Choices <a name="design-choices"></a>
 
 ---
 
 ## Features <a name="features"></a>
-
+UPDATE
 
 ### Welcome Screen <a name="welcome-screen"></a>
 On the welcome screen the user is asked to enter their name 
 UPDATE ![welcome page](./assets/readme-resources/welcome-page.png)
 
-
 ## Future Features <a name="future-features"></a>
+UPDATE
 While the current version of the project is fully functional, I have some exciting features planned for future updates. Here are a few ideas that I didn't have time to implement in this release:
 
 - Login system for keeping accurate scores record
@@ -92,14 +91,8 @@ While the current version of the project is fully functional, I have some exciti
 
 ---
 
-
-
-
-
-
-
-
 ## Testing <a name="testing"></a>
+UPDATE
 
 ### Manual Features Testing <a name="features-testing"></a>
 
@@ -111,11 +104,7 @@ While the current version of the project is fully functional, I have some exciti
 |Github link in the footer|Click|Opens the github repository in new tab|
 |Linkedin link in the footer|Click|Opens the Linkedin profile in new tab|
 
-
-
-
-
-UPDATE ### Bugs Resolved <a name="bugs"></a>
+### Bugs Resolved <a name="bugs"></a>
 
 **Introduction**
 This section provides a summary of bugs that have been identified, reported, and subsequently resolved.
@@ -149,12 +138,9 @@ Here are the details of the resolved bugs:
 
 ### Python Validator Testing <a name="validator-testing"></a>
 
-
 I validated my files using Code Institute's Python Linter
 
-UPDATE ![oython validator](./assets/readme-resources/validator-html.png)
-
-
+UPDATE ![python validator](./assets/readme-resources/validator-html.png)
 
 ---
 
@@ -166,7 +152,8 @@ UPDATE The live link can be found here - [live site](https://justynath.github.io
 
 ---
 
-UPDATE ## Credits  <a name="credits"></a>
+## Credits  <a name="credits"></a>
+UPDATE
 
 ### Content <a name="content"></a>
 - The fonts were imported from [Google Fonts](https://fonts.google.com/)
