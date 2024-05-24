@@ -27,7 +27,7 @@ def enter_user_name():
     """
     Enter the user's name and validate the input with exception handling
     """
-    print(f"{Fore.BLUE}R O C K\nP A P E R\nS C I S S O R S\n")
+    print(f"{Fore.CYAN}R O C K\nP A P E R\nS C I S S O R S\n")
 
     while True:
         try:
@@ -38,7 +38,7 @@ def enter_user_name():
             else:
                 raise TypeError
         except TypeError:
-            print(f"{Fore.RED}Name must be at least three characters")
+            print(f"{Fore.MAGENTA}Name must be at least three characters")
             continue
     return user_name
 
@@ -59,7 +59,7 @@ def how_many_rounds():
             else:
                 raise ValueError
         except ValueError:
-            print(f"{Fore.RED}Please enter a number between 1 and 8")
+            print(f"{Fore.MAGENTA}Please enter a number between 1 and 8")
     return number_of_rounds
 
 
@@ -81,12 +81,12 @@ def play_game():
         # Validate input. Only allow values in options tuple
         while True:
             increment = i+1
-            print(f"\n{Fore.BLUE}Round {increment}")
+            print(f"\n{Fore.CYAN}Round {increment}")
             # Allow correct values with capital letters and spaces
             user_choice = input(f"{Fore.WHITE}What's your choice? (rock, paper, scissors):\n{Fore.YELLOW}").lower().strip()
             computer_choice = random.choice(options)
             if user_choice not in options:
-                print(f"{Fore.RED}{user_choice} is not an option")
+                print(f"{Fore.MAGENTA}{user_choice} is not an option")
                 continue
             else:
                 break
@@ -119,7 +119,7 @@ def show_instructions():
                 f = open('instructions.txt')
                 lines = f.read()
                 f.close()
-                print(f"{Fore.BLUE}{lines}")
+                print(f"{Fore.CYAN}{lines}")
                 while True:
                     try:
                         # Reconfirm with the user if they want to proceed
@@ -127,18 +127,18 @@ def show_instructions():
                         if start_game == 'y':
                             return
                         elif start_game == 'n':
-                            print(f"{Fore.BLUE}Bye")
+                            print(f"{Fore.CYAN}Bye, {Fore.YELLOW}{user}")
                             quit()
                         else:
                             raise ValueError
                     except ValueError:
-                        print(f"{Fore.RED}Please select 'y' or 'n' only")
+                        print(f"{Fore.MAGENTA}Please select 'y' or 'n' only")
             elif instr_choice == 2:
                 return
             else:
                 raise ValueError
         except ValueError:
-            print(f"{Fore.RED}Please select '1' or '2' only")
+            print(f"{Fore.MAGENTA}Please select '1' or '2' only")
 
 
 def display_score():
@@ -200,7 +200,7 @@ def update_scores_record(data):
     """
     while True:
         try:
-            print(f"{Fore.RED}IN ORDER TO GET THE ACCURATE SUCCESS RATE IT IS RECOMMENDED TO ALWAYS UPDATE YOUR SCORE\n")
+            print(f"{Fore.MAGENTA}IN ORDER TO GET THE ACCURATE SUCCESS RATE IT IS RECOMMENDED TO ALWAYS UPDATE YOUR SCORE\n")
             add_score = input(f"{Fore.WHITE}Would you like to proceed with updating your overall score record (y/n)?\n{Fore.YELLOW}").lower()
             if add_score == 'y':
                 print(f"\n{Fore.WHITE}Updating scores record...\n")
@@ -229,7 +229,7 @@ def update_scores_record(data):
             else:
                 raise ValueError
         except ValueError:
-            print(f"{Fore.RED}Please select 'y' or 'n' only")
+            print(f"{Fore.MAGENTA}Please select 'y' or 'n' only")
 
 
 def display_overall_score():
@@ -261,4 +261,4 @@ display_overall_score()
 
 
 print(f"""\n{Fore.WHITE}Thank you for playing, {Fore.YELLOW}{user}
-{Fore.WHITE}Click {Fore.RED}'Start Game' {Fore.WHITE}on the top of this page to play again""")
+{Fore.WHITE}Click {Fore.MAGENTA}'Start Game' {Fore.WHITE}on the top of this page to play again""")
