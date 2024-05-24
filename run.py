@@ -38,7 +38,7 @@ def enter_user_name():
             else:
                 raise TypeError
         except TypeError:
-            print(f"{Fore.MAGENTA}Name must be at least three characters")
+            print(f"{Fore.RED}Name must be at least three characters")
             continue
     return user_name
 
@@ -59,7 +59,7 @@ def how_many_rounds():
             else:
                 raise ValueError
         except ValueError:
-            print(f"{Fore.MAGENTA}Please enter a number between 1 and 8")
+            print(f"{Fore.RED}Please enter a number between 1 and 8")
     return number_of_rounds
 
 
@@ -86,7 +86,7 @@ def play_game():
             user_choice = input(f"{Fore.WHITE}What's your choice? (rock, paper, scissors):\n{Fore.YELLOW}").lower().strip()
             computer_choice = random.choice(options)
             if user_choice not in options:
-                print(f"{Fore.MAGENTA}{user_choice} is not an option")
+                print(f"{Fore.RED}{user_choice} is not an option")
                 continue
             else:
                 break
@@ -132,13 +132,13 @@ def show_instructions():
                         else:
                             raise ValueError
                     except ValueError:
-                        print(f"{Fore.MAGENTA}Please select 'y' or 'n' only")
+                        print(f"{Fore.RED}Please select 'y' or 'n' only")
             elif instr_choice == 2:
                 return
             else:
                 raise ValueError
         except ValueError:
-            print(f"{Fore.MAGENTA}Please select '1' or '2' only")
+            print(f"{Fore.RED}Please select '1' or '2' only")
 
 
 def display_score():
@@ -148,13 +148,13 @@ def display_score():
     points = 0  # This variable will be used for updating the scores record in google sheet
     print(f"\n{Fore.YELLOW}{user} {Fore.WHITE}= {Fore.YELLOW}{user_score} {Fore.WHITE}\nComputer = {Fore.GREEN}{computer_score}")
     if user_score > computer_score:
-        print(f"\n{Fore.YELLOW}You win!\n")
+        print(f"\n{Fore.YELLOW}{user} WINS!\n")
         points = 2
     elif user_score < computer_score:
-        print(f"\n{Fore.GREEN}Computer wins!\n")
+        print(f"\n{Fore.GREEN}COMPUTER WINS!\n")
         points = 0
     else:
-        print(f"\n{Fore.WHITE}It's a tie!\n")
+        print(f"\n{Fore.WHITE}IT'S A TIE!\n")
         points = 1
     return points
 
@@ -200,7 +200,7 @@ def update_scores_record(data):
     """
     while True:
         try:
-            print(f"{Fore.MAGENTA}IN ORDER TO GET THE ACCURATE SUCCESS RATE IT IS RECOMMENDED TO ALWAYS UPDATE YOUR SCORE\n")
+            print(f"{Fore.RED}IN ORDER TO GET THE ACCURATE SUCCESS RATE IT IS RECOMMENDED TO ALWAYS UPDATE YOUR SCORE\n")
             add_score = input(f"{Fore.WHITE}Would you like to proceed with updating your overall score record (y/n)?\n{Fore.YELLOW}").lower()
             if add_score == 'y':
                 print(f"\n{Fore.WHITE}Updating scores record...\n")
@@ -229,7 +229,7 @@ def update_scores_record(data):
             else:
                 raise ValueError
         except ValueError:
-            print(f"{Fore.MAGENTA}Please select 'y' or 'n' only")
+            print(f"{Fore.RED}Please select 'y' or 'n' only")
 
 
 def display_overall_score():
@@ -246,11 +246,11 @@ def display_overall_score():
     row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
     i = 1
     # Printing the overall score
-    print(f"{Fore.YELLOW}{user}{Fore.WHITE}'s overall score is:")
+    print(f"{Fore.YELLOW}{user}{Fore.WHITE}'s overall score is:\n{Fore.YELLOW}---------------------------")
     while i < 3:
         print(f"{headings[i]}: {Fore.YELLOW}{row_with_score[i]}")
         i += 1
-    print(f"{Fore.WHITE}Success Rate: {Fore.YELLOW}{row_with_score[3]}%")
+    print(f"{Fore.WHITE}Success Rate: {Fore.YELLOW}{row_with_score[3]}%{Fore.YELLOW}\n---------------------------")
 
 
 points = display_score()
@@ -261,4 +261,4 @@ display_overall_score()
 
 
 print(f"""\n{Fore.WHITE}Thank you for playing, {Fore.YELLOW}{user}
-{Fore.WHITE}Click {Fore.MAGENTA}'Start Game' {Fore.WHITE}on the top of this page to play again""")
+{Fore.WHITE}Click {Fore.RED}'Start Game' {Fore.WHITE}on the top of this page to play again""")
