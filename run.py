@@ -80,7 +80,8 @@ def play_game():
     for i in range(rounds):
         # Validate input. Only allow values in options tuple
         while True:
-            print(f"\n{Fore.BLUE}Round ", i+1)
+            increment = i+1
+            print(f"\n{Fore.BLUE}Round {increment}")
             # Allow correct values with capital letters and spaces
             user_choice = input(f"{Fore.WHITE}What's your choice? (rock, paper, scissors):\n{Fore.YELLOW}").lower().strip()
             computer_choice = random.choice(options)
@@ -237,27 +238,24 @@ def display_overall_score():
     """
     # Get the headings from the scores worksheet's first row
     headings = SHEET.worksheet("scores").row_values(1)
+    # Finding the row number where the values are 
     cell = scores_worksheet.find(user)
     cell_string = str(cell)
     split_cell = str(cell_string.split('<Cell R')[1])
     find_row_num = int(split_cell.rsplit('C')[0])
-    # print(find_row_num) #testing
     row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
-    # print(row_with_score) #testing
-    result = {}  # Initialize an empty dictionary to store the stock values
-    # Iterate over the headings and corresponding data values using zip
-    for heading, scores_value in zip(headings, row_with_score):
-        # Assign each heading as a key and its corresponding value as the value in the result dictionary
-        result[heading] = scores_value
-
-    # Return the result dictionary containing headings and values
-    return result
+    i = 1
+    # Printing the overall score
+    print(f"{Fore.YELLOW}{user}{Fore.WHITE}'s overall score is:")
+    while i < 3:
+        print(f"{headings[i]}: {Fore.YELLOW}{row_with_score[i]}")
+        i += 1
+    print(f"{Fore.WHITE}Success Rate: {Fore.YELLOW}{row_with_score[3]}%")
 
 
 points = display_score()
 new_overall_score = calculate_new_score_row()
 updated_score = update_scores_record(new_overall_score)
-overall_score = display_overall_score()
-print(f"Your overall score is:\n {Fore.YELLOW}{overall_score}")
+display_overall_score()
 print(f"\n{Fore.WHITE}Thank you for playing\nClick {Fore.BLUE}'Start Game' {Fore.WHITE}on the top of this page to play again")
 quit()
