@@ -23,7 +23,7 @@ all_data = scores.get_all_values()
 scores_worksheet = SHEET.worksheet('scores')
 
 
-def users_name():
+def enter_user_name():
     """
     Enter the user's name and validate the input with exception handling
     """
@@ -43,7 +43,7 @@ def users_name():
     return user_name
 
 
-user = users_name()
+user = enter_user_name()
 
 
 def how_many_rounds():
@@ -257,5 +257,8 @@ points = display_score()
 new_overall_score = calculate_new_score_row()
 updated_score = update_scores_record(new_overall_score)
 display_overall_score()
-print(f"\n{Fore.WHITE}Thank you for playing\nClick {Fore.BLUE}'Start Game' {Fore.WHITE}on the top of this page to play again")
-quit()
+
+
+
+print(f"""\n{Fore.WHITE}Thank you for playing, {Fore.YELLOW}{user}
+{Fore.WHITE}Click {Fore.RED}'Start Game' {Fore.WHITE}on the top of this page to play again""")
