@@ -188,7 +188,6 @@ def calculate_new_score_row():
         # Check if the name already exists and find the row
         if user in row:
             name_row = row
-            # print('Found:', name_row) #testing
             found = True
             """
             Calculate new values for the worksheet:
@@ -200,7 +199,6 @@ def calculate_new_score_row():
             new_points_total = points_total + points
             success_rate = round((new_points_total/(games_played*2))*100)
             new_name_row = [user, games_played, new_points_total, success_rate]
-            # print(new_name_row) #testing
             break
     if not found:
         success_rate = round((points/2)*100)
@@ -238,7 +236,6 @@ Would you like to proceed with updating your overall score record (y/n)?
                         # Remove the part from 'c' until the end.
                         # Return an integer with any number of digits
                         find_row_num = int(split_cell.rsplit('C')[0])
-                        # print(find_row_num) #testing
                         # Delete the existing row and add new row with new data
                         scores_worksheet.delete_rows(find_row_num)
                         scores_worksheet.append_row(data)
@@ -261,20 +258,23 @@ def display_overall_score():
     # Get the headings from the scores worksheet's first row
     headings = SHEET.worksheet("scores").row_values(1)
     # Finding the row number where the values are
-    cell = scores_worksheet.find(user)
-    cell_string = str(cell)
-    split_cell = str(cell_string.split('<Cell R')[1])
-    find_row_num = int(split_cell.rsplit('C')[0])
-    row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
+    found = False
+    for row in all_data:
+        if user in row:
+            values = row
+            found = True
+            break
+    if not found:
+        return
     i = 1
     # Printing the overall score
     print(f"""\n{Fore.YELLOW}---------------------------\n{user}{Fore.WHITE}\
 's overall score is:\n{Fore.YELLOW}---------------------------""")
     while i < 3:
-        print(f"{headings[i]}: {Fore.YELLOW}{row_with_score[i]}")
+        print(f"{headings[i]}: {Fore.YELLOW}{values[i]}")
         i += 1
     print(f"""{Fore.YELLOW}
-Success Rate: {row_with_score[3]}%{Fore.YELLOW}
+Success Rate: {values[3]}%{Fore.YELLOW}
 ---------------------------\n""")
 
 

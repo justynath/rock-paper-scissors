@@ -6,7 +6,7 @@ This is an implementation of the classic Rock Paper Scissors game in Python. The
 
 [live site](https://rock-paper-scissors-jth-58f83fceca79.herokuapp.com/)
 
-![Am I Responsive](./assets/readme-resources/am-i-responsive.png)
+![Am I Responsive](./readme-files/am-i-responsive.png)
 
 ## Table of Contents
 1. [**Overview**](#overview) 
@@ -63,7 +63,7 @@ Due to this program being built for terminal use, there was limited design optio
 **Welcome Screen**
 
 On the welcome screen the title of the game is displayed and the user is asked to enter their name 
-UPDATE ![welcome screen](./readme-files/welcome-screen.png)
+![welcome screen](./readme-files/welcome-screen.png)
 
 **Reading instructions option**
 
@@ -73,19 +73,18 @@ The user has an option to read the instructions or start the game. After the ins
 
 
 **Play Game**
-The user is asked to chose how many rounds they want to play this game.
-The user is asked to select option. The user's option and computer optio are displayed. Repeats until selected number of rounds
+
+The user is asked to chose how many rounds they want to play this game. The user is asked to select option. The user's option and computer's option are displayed. Repeats until selected number of rounds
 ![instructions](./readme-files/play-game.png)
 
 **Finish Game**
 
-End of game. The winner is announced and the user is promped to update their score. It is important to update it each time they play so the success rate is accuratly calculated.
+End of game. The winner is announced and the user is promped to update their score. It is important to update it each time they play so the success rate is accuratly calculated (more information on calculating the success rate in testing section)
 ![gameover](./readme-files/update-score.png)
 
 **Display current score**
 
-The current score including the success rate is displayed
-The user is asked if they want to play again
+The current score including the success rate is displayed. The user is asked if they want to play again
 ![display score](./readme-files/display-score.png)
 
 
@@ -134,6 +133,7 @@ While the current version of the project is fully functional, I have some exciti
 *Final score is the score after a game (selected number of rounds). It is one of three options: player wins, computer wins, or tie. A player win earns 2 points, a tie earns 1 point, and a computer win earns 0 points.
 
 **Overall score is the score recorded in the Google Spreadsheet. It includes the number of games, number of points, and success rate, calculated with the formula:
+
 success rate = ((number_of_points)/(number_of_games_played * 2))*100
 
 
