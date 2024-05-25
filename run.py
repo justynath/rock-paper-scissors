@@ -268,14 +268,14 @@ def display_overall_score():
     row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
     i = 1
     # Printing the overall score
-    print(f"""{Fore.YELLOW}{user}{Fore.WHITE}\
+    print(f"""\n{Fore.YELLOW}---------------------------\n{user}{Fore.WHITE}\
 's overall score is:\n{Fore.YELLOW}---------------------------""")
     while i < 3:
-        print(f"\n{headings[i]}: {Fore.YELLOW}{row_with_score[i]}")
+        print(f"{headings[i]}: {Fore.YELLOW}{row_with_score[i]}")
         i += 1
-    print(f"""{Fore.WHITE}
-Success Rate: {Fore.YELLOW}{row_with_score[3]}%{Fore.YELLOW}
----------------------------""")
+    print(f"""{Fore.YELLOW}
+Success Rate: {row_with_score[3]}%{Fore.YELLOW}
+---------------------------\n""")
 
 
 points = display_score()
