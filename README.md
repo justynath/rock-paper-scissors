@@ -112,7 +112,7 @@ While the current version of the project is fully functional, I have some exciti
 - Gitpod: The terminal was used to commit my code and push it to Github.
 - Git: Was used for version control through the vscode terminal.
 - Heroku: Used to deploy, manage, and scale my application.
-- [Lucidchard](https://www.lucidchart.com/): Used to create the flowchart
+- Lucidchard: Used to create the flowchart
 
 ---
 
@@ -122,7 +122,27 @@ While the current version of the project is fully functional, I have some exciti
 
 | Section Tested | Input To Validate | Expected Outcome | Actual Outcome | Pass/Fail |
 | -------------- | ----------------- | ---------------- | -------------- | --------- |
-| Welcome screen |  |  | As expected | Pass |
+| Welcome screen |  n/a | Name of the game displayed. User asked to enter the name | As expected | Pass |
+| Welcome screen |  J | Error message 'name must be at least 3 characters | As expected | Pass |
+| Welcome screen |  Jay | Welcome to the game message and option to read instructions | As expected | | Pass |
+| Welcome to the game and option to read instructions | 4 | Error message 'only 1 or 2 is valid'| As expected | Pass |
+| Welcome to the game and option to read instructions | 2 | Game starts. Player asked to choose numebr of rounds| As expected | Pass |
+| Welcome to the game and option to read instructions | 1 | Instructions displayed. Player asked to confirm if they want to play | As expected | Pass |
+| Instructions displayed. Player asked to confirm if they want to play | yes | Error message 'only y or n is valid' | As expected | Pass |
+| Instructions displayed. Player asked to confirm if they want to play | n | Exit game | As expected | Pass |
+| Instructions displayed. Player asked to confirm if they want to play | y | Game starts. Player asked to choose numebr of rounds | As expected | Pass |
+| Game starts. Player asked to choose numebr of rounds | 12 | Error message 'only numbers between 1 ands 8 are valid' | As expected | Pass |
+| Game starts. Player asked to choose numebr of rounds | 4 | Player asked to select their choice: rock, paper, scissor | As expected | Pass |
+| Player asked to select their choice: rock, paper, scissor | r | Error message 'only rock, paper, scissor are valid' | As expected | Pass |
+| Player asked to select their choice: rock, paper, scissor | rock | Player's and computer's choice are shown. If more rounds are played, player is asked ot select their choice again | As expected | Pass |
+| Final score* is displayed and winner announced. The player is prompted to update their overall score** | no | Error message 'only y or n is valid' | As expected | Pass |
+| Final score* is displayed and winner announced. The player is prompted to update their overall score** | n | Overall score is displayed (without updating it). End of game. Player prompted to play again | As expected | Pass |
+| Final score* is displayed and winner announced. The player is prompted to update their overall score** | y | The spreadsheet is updated. Overall score is displayed (without updating it). End of game. Player prompted to play again | As expected | Pass |
+| Overall score is displayed (without updating it). End of game. Player prompted to play again | n/a | As expected | Pass |
+
+*Final score is the score after a game (selected number of rounds). It is one of three options: player wins, computer wins, or tie. A player win earns 2 points, a tie earns 1 point, and a computer win earns 0 points.
+**Overall score is the score recorded in the Google Spreadsheet. It includes the number of games, number of points, and success rate, calculated with the formula:
+success rate = ((number_of_points)/(number_of_games_played * 2))*100
 
 
 ### Bugs Resolved <a name="bugs"></a>
@@ -135,17 +155,22 @@ Below is a summary of resolved bugs:
 
 | Bug ID | Bug Description | Status |
 |--------|-----------------|--------|
-| #001   |  | Resolved |
-| #002   |  | Resolved |
-| #003   |  | Resolved |
+| #001   | The row withing the gspread was not updating | Resolved |
+| #002   | The overall score is not user freindly (displays as dictionary) | Resolved |
+ 
 
 **Bug Details**
 Here are the details of the resolved bugs:
 
-**Bug #001**
-- **Description**:  
-- **Resolution**: 
-- **Impact**: 
+**Bug #01**
+- **Description**:  The row within the Google Spreadsheet was not updating
+- **Resolution**: After searching through the name column, I used the find() method to identify the cell coordinates. Then, I used the split() method to identify the row number. This allowed me to remove the existing row and add the new row
+- **Impact**: The score record and success rate are now accurate
+
+**Bug #02**
+- **Description**:  The overall score is not user-friendly (displays as a dictionary)
+- **Resolution**: I returned the headers and values rows as lists and used zip iteration to display them clearly
+- **Impact**: The user can understand their overall score more easily
 
 
 ### Python Validator Testing <a name="validator-testing"></a>
@@ -197,6 +222,7 @@ To create a personal copy of a public repository to contribute to a project or c
 
 **Code**
 - I used some online video tutorial, such as [video 1](https://www.youtube.com/watch?v=fn68QNcatfo) or [video 2](https://www.youtube.com/watch?v=ruISjcokmuk), to understand the basic logic and structure of Rock Paper Scissors as designed using Python. These were used as inspiration only. All code is written by me, with some lines or short blocks of code adapted from these videos.
+
 
 **Anknowledgements** <a name="anknowledgements"></a>**
 - Medale Oluwafemi, my mentor at Code Institute for his guidance and invaluable support with this project
