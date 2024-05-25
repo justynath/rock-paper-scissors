@@ -12,11 +12,7 @@ This is an implementation of the classic Rock Paper Scissors game in Python. The
 ## Table of Contents
 1. [**Overview**](#overview) 
 2. [**Planning**](#planning)
-    - [**Aim**](#aim)
-    - [**Targeted Audience**](#targeted-audience)
 3. [**UX**](#ux)
-    - [**User Stories**](#user-stories)
-    - [**Design**](#design)
 4. [**Features**](#features)
 5. [**Future Features**](#future-features)
 6. [**Technologies**](#technologies)
@@ -31,17 +27,19 @@ This is an implementation of the classic Rock Paper Scissors game in Python. The
 
 ## Planning <a name="planning"></a>
 
-### Aim <a name="aim"></a>
+**Aim**
+
 The aim of creating the Rock Paper Scissors game in Python for a user is to offer a simple, engaging, and interactive way to enjoy a classic game through a digital medium. It provides users with a quick and fun break, allowing them to play against the computer and test their luck and strategy. Additionally, the game serves as a practical demonstration of basic programming capabilities, potentially inspiring users to explore and learn more about coding and software development. By delivering an easy-to-use and entertaining application, it aims to enhance the user's experience with technology and gaming.
 
-### Targeted Audience <a name="targeted-audience"></a>
+**Targeted Audience**
+
 The targeted audience for the Rock Paper Scissors game includes casual gamers looking for quick entertainment. It is great for individuals interested in classic games and those who enjoy small, interactive applications that can be played in short bursts. The game appeals to a broad range of ages and skill levels, making it accessible and enjoyable for anyone with a few minutes to spare.
 
 ---
 
 ## UX <a name="ux"></a>
 
-### User Stories <a name="user-stories"></a>
+**User Stories**
 - As a user, I want to easily understand how to start and play the game.
 - As a user, I want the option to play multiple rounds within one game.
 - As a user, I want to input my choice of rock, paper, or scissors.
@@ -52,11 +50,12 @@ The targeted audience for the Rock Paper Scissors game includes casual gamers lo
 - As a user, I want to know what my overall success rate is while playing the game.
 - As a user, I want clear instructions and feedback throughout the game to enhance my playing experience.
 
-### Design <a name="design"></a>
+**Design**
 
-**Flowchart**
+***Flowchart***
 
-**Design Choices**
+***Design Choices***
+
 Due to this program being built for terminal use, there was limited design options. I used basic keyboard letters with different colours from Colorama.
 
 ---
@@ -64,30 +63,37 @@ Due to this program being built for terminal use, there was limited design optio
 ## Features <a name="features"></a>
 
 **Welcome Screen**
+
 On the welcome screen the title of the game is displayed and the user is asked to enter their name 
 UPDATE ![welcome screen](./assets/readme-resources/welcome-page.png)
 
 **Reading instructions option**
+
 The user has an option to read the instructions or start the game. After the instructions are desplayed the user can chose to play or quit.
 ![instructions](./assets/readme-resources/welcome-page.png)
 
 **Start Game**
+
 The user is asked to chose how many rounds they want to play this game.
 ![choose rounds](./assets/readme-resources/welcome-page.png)
 
 **Play Game**
+
 The user is asked to select option. The user's option and computer optio are displayed. Repeats until selected number of rounds
 ![instructions](./assets/readme-resources/welcome-page.png)
 
 **Finish Game**
+
 End of game. The winner is announced and the user is promped to update their score. It is important to update it each time they play so the success rate is accuratly calculated.
 ![gameover](./assets/readme-resources/welcome-page.png)
 
 **Display current score**
+
 The current score including the success rate is displayed
 ![display score](./assets/readme-resources/welcome-page.png)
 
 **Play Again**
+
 The user is asked if they want to play again
 ![instructions](./assets/readme-resources/welcome-page.png)
 
@@ -106,6 +112,7 @@ While the current version of the project is fully functional, I have some exciti
 - Gitpod: The terminal was used to commit my code and push it to Github.
 - Git: Was used for version control through the vscode terminal.
 - Heroku: Used to deploy, manage, and scale my application.
+- [Lucidchard](https://www.lucidchart.com/): Used to create the flowchart
 
 ---
 
@@ -188,7 +195,8 @@ To create a personal copy of a public repository to contribute to a project or c
 
 ## Credits  <a name="credits"></a>
 
-**Content**
+**Code**
+- I used some online video tutorial, such as [video 1](https://www.youtube.com/watch?v=fn68QNcatfo) or [video 2](https://www.youtube.com/watch?v=ruISjcokmuk), to understand the basic logic and structure of Rock Paper Scissors as designed using Python. These were used as inspiration only. All code is written by me, with some lines or short blocks of code adapted from these videos.
 
 **Anknowledgements** <a name="anknowledgements"></a>**
 - Medale Oluwafemi, my mentor at Code Institute for his guidance and invaluable support with this project
