@@ -1,5 +1,4 @@
 # Rock Paper Scissors
----
 
 ## Overview <a name="overview"></a>
 
@@ -14,14 +13,13 @@ This is an implementation of the classic Rock Paper Scissors game in Python. The
 2. [**Planning**](#planning)
 3. [**UX**](#ux)
 4. [**Features**](#features)
-5. [**Future Features**](#future-features)
-6. [**Technologies**](#technologies)
-7. [**Testing**](#testing)
+5. [**Technologies**](#technologies)
+6. [**Testing**](#testing)
     - [**Manual Features testing**](#features-testing) 
     - [**Bugs Resolved**](#bugs)
     - [**Python Validator Testing**](#validator-testing)
-8.  [**Deployment**](#deployment)
-9.  [**Credits**](#credits)
+7.  [**Deployment**](#deployment)
+8.  [**Credits**](#credits)
 
 ---
 
@@ -65,40 +63,33 @@ Due to this program being built for terminal use, there was limited design optio
 **Welcome Screen**
 
 On the welcome screen the title of the game is displayed and the user is asked to enter their name 
-UPDATE ![welcome screen](./assets/readme-resources/welcome-page.png)
+UPDATE ![welcome screen](./readme-files/welcome-screen.png)
 
 **Reading instructions option**
 
 The user has an option to read the instructions or start the game. After the instructions are desplayed the user can chose to play or quit.
-![instructions](./assets/readme-resources/welcome-page.png)
+![instructions one](./readme-files/instructions-one.png)
+![instructions two](./readme-files/instructions-two.png)
 
-**Start Game**
-
-The user is asked to chose how many rounds they want to play this game.
-![choose rounds](./assets/readme-resources/welcome-page.png)
 
 **Play Game**
-
+The user is asked to chose how many rounds they want to play this game.
 The user is asked to select option. The user's option and computer optio are displayed. Repeats until selected number of rounds
-![instructions](./assets/readme-resources/welcome-page.png)
+![instructions](./readme-files/play-game.png)
 
 **Finish Game**
 
 End of game. The winner is announced and the user is promped to update their score. It is important to update it each time they play so the success rate is accuratly calculated.
-![gameover](./assets/readme-resources/welcome-page.png)
+![gameover](./readme-files/update-score.png)
 
 **Display current score**
 
 The current score including the success rate is displayed
-![display score](./assets/readme-resources/welcome-page.png)
-
-**Play Again**
-
 The user is asked if they want to play again
-![instructions](./assets/readme-resources/welcome-page.png)
+![display score](./readme-files/display-score.png)
 
 
-## Future Features <a name="future-features"></a>
+### Future Features
 While the current version of the project is fully functional, I have some exciting features planned for future updates. Here are a few ideas that I didn't have time to implement in this release:
 - Login system for keeping accurate score records: The app recognizes the user's name if it is already in the system (Google Spreadsheet).
 - Adding additional visual effects for an improved user-friendly experience.
@@ -141,6 +132,7 @@ While the current version of the project is fully functional, I have some exciti
 | Overall score is displayed (without updating it). End of game. Player prompted to play again | n/a | As expected | Pass |
 
 *Final score is the score after a game (selected number of rounds). It is one of three options: player wins, computer wins, or tie. A player win earns 2 points, a tie earns 1 point, and a computer win earns 0 points.
+
 **Overall score is the score recorded in the Google Spreadsheet. It includes the number of games, number of points, and success rate, calculated with the formula:
 success rate = ((number_of_points)/(number_of_games_played * 2))*100
 
@@ -155,8 +147,8 @@ Below is a summary of resolved bugs:
 
 | Bug ID | Bug Description | Status |
 |--------|-----------------|--------|
-| #001   | The row withing the gspread was not updating | Resolved |
-| #002   | The overall score is not user freindly (displays as dictionary) | Resolved |
+| #001   | The row within the Google Spreadsheet was not updating | Resolved |
+| #002   | The overall score is not user-friendly (displays as a dictionary) | Resolved |
  
 
 **Bug Details**
@@ -224,6 +216,6 @@ To create a personal copy of a public repository to contribute to a project or c
 - I used some online video tutorial, such as [video 1](https://www.youtube.com/watch?v=fn68QNcatfo) or [video 2](https://www.youtube.com/watch?v=ruISjcokmuk), to understand the basic logic and structure of Rock Paper Scissors as designed using Python. These were used as inspiration only. All code is written by me, with some lines or short blocks of code adapted from these videos.
 
 
-**Anknowledgements** <a name="anknowledgements"></a>**
+**Anknowledgements**
 - Medale Oluwafemi, my mentor at Code Institute for his guidance and invaluable support with this project
 - Tutor support at Code Institute for assisting me with solving problems and fixing bugs and errors
