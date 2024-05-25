@@ -51,6 +51,7 @@ The targeted audience for the Rock Paper Scissors game includes casual gamers lo
 **Design**
 
 ***Flowchart***
+![flowchart](./readme-files/flowchart.pdf)
 
 ***Design Choices***
 
