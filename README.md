@@ -63,7 +63,7 @@ Due to this program being built for terminal use, there was limited design optio
 
 **Welcome Screen**
 
-On the welcome screen the title of the game is displayed and the user is asked to enter their name 
+On the welcome screen the title of the game is displayed and the user is asked to enter their name.
 ![welcome screen](./readme-files/welcome-screen.png)
 
 **Reading instructions option**
@@ -75,17 +75,17 @@ The user has an option to read the instructions or start the game. After the ins
 
 **Play Game**
 
-The user is asked to chose how many rounds they want to play this game. The user is asked to select option. The user's option and computer's option are displayed. Repeats until selected number of rounds
+The user is asked to chose how many rounds they want to play this game. The user is asked to select option. The user's option and computer's option are displayed. Repeats until selected number of rounds.
 ![instructions](./readme-files/play-game.png)
 
 **Finish Game**
 
-End of game. The winner is announced and the user is promped to update their score. It is important to update it each time they play so the success rate is accuratly calculated (more information on calculating the success rate in testing section)
+End of game. The winner is announced and the user is promped to update their score. It is important to update it each time they play so the success rate is accuratly calculated (more information on calculating the success rate in testing section).
 ![gameover](./readme-files/update-score.png)
 
 **Display current score**
 
-The current score including the success rate is displayed. The user is asked if they want to play again
+The current score including the success rate is displayed. The user is asked if they want to play again.
 ![display score](./readme-files/display-score.png)
 
 
@@ -115,7 +115,7 @@ While the current version of the project is fully functional, I have some exciti
 | -------------- | ----------------- | ---------------- | -------------- | --------- |
 | Welcome screen |  n/a | Name of the game displayed. User asked to enter the name | As expected | Pass |
 | Welcome screen |  J | Error message 'name must be at least 3 characters | As expected | Pass |
-| Welcome screen |  Jay | Welcome to the game message and option to read instructions | As expected | | Pass |
+| Welcome screen |  Jay | Welcome to the game message and option to read instructions | As expected | Pass |
 | Welcome to the game and option to read instructions | 4 | Error message 'only 1 or 2 is valid'| As expected | Pass |
 | Welcome to the game and option to read instructions | 2 | Game starts. Player asked to choose numebr of rounds| As expected | Pass |
 | Welcome to the game and option to read instructions | 1 | Instructions displayed. Player asked to confirm if they want to play | As expected | Pass |
@@ -129,7 +129,7 @@ While the current version of the project is fully functional, I have some exciti
 | Final score* is displayed and winner announced. The player is prompted to update their overall score** | no | Error message 'only y or n is valid' | As expected | Pass |
 | Final score* is displayed and winner announced. The player is prompted to update their overall score** | n | Overall score is displayed (without updating it). End of game. Player prompted to play again | As expected | Pass |
 | Final score* is displayed and winner announced. The player is prompted to update their overall score** | y | The spreadsheet is updated. Overall score is displayed (without updating it). End of game. Player prompted to play again | As expected | Pass |
-| Overall score is displayed (without updating it). End of game. Player prompted to play again | n/a | As expected | Pass |
+| Overall score is displayed (without updating it). End of game | n/a | Player prompted to play again | As expected | Pass |
 
 *Final score is the score after a game (selected number of rounds). It is one of three options: player wins, computer wins, or tie. A player win earns 2 points, a tie earns 1 point, and a computer win earns 0 points.
 
@@ -177,6 +177,7 @@ I validated my files using Code Institute's Python Linter
 ## Deployment <a name="deployment"></a>
 
 **Version Control**
+
 I used Gitpod code editor to create my site and pushed to GitHub to the remote repository rock-paper-scissors.
 The following git commands were used throughout development to push code to the remote repo:
 - git add - This command was used to add the file(s) to the staging area before they are committed.
@@ -184,6 +185,7 @@ The following git commands were used throughout development to push code to the 
 - git push - This command was used to push all committed code to the remote repository on github.
 
 **Heroku Deployment**
+
 Heroku provides a platform for hosting web applications, including those built using Python. I deployed my Python-based Rock Paper Scissors game on Heroku, making it accessible to users.
 
 Steps I took to deploy my application in Heroku:
@@ -203,6 +205,7 @@ Steps I took to deploy my application in Heroku:
 [live site](https://rock-paper-scissors-jth-58f83fceca79.herokuapp.com/)
 
 **Forking in GitHub**
+
 To create a personal copy of a public repository to contribute to a project or create your own version of it follow the steps below:
 - Go to the GitHub repository you wish to fork
 - Click the fork button on the top right corner of the chosen repository page
