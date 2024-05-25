@@ -191,7 +191,7 @@ def calculate_new_score_row():
             found = True
             """
             Calculate new values for the worksheet:
-            add one to games played, add 'points' to poits column,
+            add one to games played, add 'points' to points column,
             calculate new success rate"""
             games_played = int(name_row[1])
             games_played += 1
@@ -199,6 +199,7 @@ def calculate_new_score_row():
             new_points_total = points_total + points
             success_rate = round((new_points_total/(games_played*2))*100)
             new_name_row = [user, games_played, new_points_total, success_rate]
+            print(new_name_row) # testing
             break
     if not found:
         success_rate = round((points/2)*100)
@@ -258,23 +259,20 @@ def display_overall_score():
     # Get the headings from the scores worksheet's first row
     headings = SHEET.worksheet("scores").row_values(1)
     # Finding the row number where the values are
-    found = False
-    for row in all_data:
-        if user in row:
-            values = row
-            found = True
-            break
-    if not found:
-        return
+    cell = scores_worksheet.find(user)
+    cell_string = str(cell)
+    split_cell = str(cell_string.split('<Cell R')[1])
+    find_row_num = int(split_cell.rsplit('C')[0])
+    row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
     i = 1
     # Printing the overall score
     print(f"""\n{Fore.YELLOW}---------------------------\n{user}{Fore.WHITE}\
 's overall score is:\n{Fore.YELLOW}---------------------------""")
     while i < 3:
-        print(f"{headings[i]}: {Fore.YELLOW}{values[i]}")
+        print(f"{headings[i]}: {Fore.YELLOW}{row_with_score[i]}")
         i += 1
     print(f"""{Fore.YELLOW}
-Success Rate: {values[3]}%{Fore.YELLOW}
+Success Rate: {row_with_score[3]}%{Fore.YELLOW}
 ---------------------------\n""")
 
 
@@ -287,3 +285,5 @@ display_overall_score()
 print(f"""\n{Fore.WHITE}Thank you for playing, {Fore.YELLOW}{user}
 {Fore.WHITE}Click {Fore.RED}'Start Game' \
 {Fore.WHITE}on the top of this page to play again""")
+
+
