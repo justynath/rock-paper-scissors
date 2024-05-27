@@ -114,7 +114,8 @@ While the current version of the project is fully functional, I have some exciti
 | Section Tested | Input To Validate | Expected Outcome | Actual Outcome | Pass/Fail |
 | -------------- | ----------------- | ---------------- | -------------- | --------- |
 | Welcome screen |  n/a | Name of the game displayed. User asked to enter the name | As expected | Pass |
-| Welcome screen |  J | Error message 'name must be at least 3 characters | As expected | Pass |
+| Welcome screen |  123 | Error message 'invalid value' | As expected | Pass |
+| Welcome screen |  J | Error message 'name must be at least 3 characters' | As expected | Pass |
 | Welcome screen |  Jay | Welcome to the game message and option to read instructions | As expected | Pass |
 | Welcome to the game and option to read instructions | 4 | Error message 'only 1 or 2 is valid'| As expected | Pass |
 | Welcome to the game and option to read instructions | 2 | Game starts. Player asked to choose numebr of rounds| As expected | Pass |

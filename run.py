@@ -30,15 +30,20 @@ def enter_user_name():
         try:
             user_name = str(input(f"""{Fore.WHITE}
     Enter your name: {Fore.YELLOW}"""))
-            if len(user_name) > 2:
+            if user_name.isdigit():
+                raise TypeError
+            elif len(user_name) > 2:
                 print(f"""{Fore.WHITE}
         Welcome to the game {Fore.MAGENTA}{user_name}\n""")
                 break
             else:
-                raise TypeError
-        except TypeError:
+                raise ValueError
+        except ValueError:
             print(f"""{Fore.CYAN}
     Name must be at least three characters""")
+        except TypeError:
+            print(f"""{Fore.CYAN}
+    Invalid value""")
             continue
     return user_name
 
