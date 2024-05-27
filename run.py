@@ -21,20 +21,25 @@ def enter_user_name():
     """
     Enter the user's name and validate the input with exception handling
     """
-    print(f"{Fore.CYAN}R O C K\nP A P E R\nS C I S S O R S\n")
+    print(f"""{Fore.CYAN}
+    R O C K
+    P A P E R
+    S C I S S O R S\n""")
 
     while True:
         try:
             user_name = str(input(f"""{Fore.WHITE}
-Enter your name: \n{Fore.YELLOW}"""))
+    Enter your name:
+    {Fore.YELLOW}"""))
             if len(user_name) > 2:
                 print(f"""{Fore.WHITE}
-Welcome to the game {Fore.YELLOW}{user_name}\n""")
+    Welcome to the game {Fore.YELLOW}{user_name}""")
                 break
             else:
                 raise TypeError
         except TypeError:
-            print(f"{Fore.RED}Name must be at least three characters")
+            print(f"""{Fore.RED}
+    Name must be at least three characters""")
             continue
     return user_name
 
@@ -45,39 +50,47 @@ def show_instructions():
     If option 1, two further options: play or quit
     If option 2, game starts
     """
-    print(f"{Fore.WHITE}1. Instructions \n2. Play the game")
+    print(f"""{Fore.WHITE}
+    1. Instructions 
+    2. Play the game""")
     # Validate input, only allow 1 or 2
     while True:
         try:
             instr_choice = int(input(f"""
-Enter '1' to read the instructions. \
-Enter '2' to start the game:\n{Fore.YELLOW}"""))
+    Enter '1' to read the instructions. \
+    Enter '2' to start the game:
+    {Fore.YELLOW}"""))
             if instr_choice == 1:
                 # Get text from the file and display
                 f = open('instructions.txt')
                 lines = f.read()
                 f.close()
-                print(f"{Fore.CYAN}{lines}")
+                print(f"""
+    {Fore.CYAN}{lines}""")
                 while True:
                     try:
                         # Reconfirm with the user if they want to proceed
-                        start_game = input(f"""{Fore.WHITE}
-Would you like to play (y/n)?:\n{Fore.YELLOW}""").lower()
+                        start_game = input(f"""
+    {Fore.WHITE}Would you like to play (y/n)?:
+    {Fore.YELLOW}""").lower()
                         if start_game == 'y':
                             return
                         elif start_game == 'n':
-                            print(f"{Fore.CYAN}Bye, {Fore.YELLOW}{user}")
+                            print(f"""
+    {Fore.WHITE}Bye, {Fore.YELLOW}{user}""")
                             quit()
                         else:
                             raise ValueError
                     except ValueError:
-                        print(f"{Fore.RED}Please select 'y' or 'n' only")
+                        print(f"""{Fore.RED}
+    Please select 'y' or 'n' only""")
             elif instr_choice == 2:
                 return
             else:
                 raise ValueError
         except ValueError:
-            print(f"{Fore.RED}Please select '1' or '2' only")
+            print(f"""{Fore.RED}
+    Please select '1' or '2' only""")
 
 
 user = enter_user_name()
@@ -97,7 +110,8 @@ def main():
         while True:
             try:
                 number_of_rounds = int(input(f"""{Fore.WHITE}
-    How many times you want to play (max 8)?:\n{Fore.YELLOW}"""))
+    How many times you want to play (max 8)?:
+    {Fore.YELLOW}"""))
                 if 1 <= number_of_rounds <= 8:
                     print(f"""{Fore.WHITE}
     You selected {Fore.YELLOW} {number_of_rounds} {Fore.WHITE}rounds""")
@@ -127,10 +141,12 @@ def main():
             # Validate input. Only allow values in options tuple
             while True:
                 increment = i+1
-                print(f"\n{Fore.CYAN}Round {increment}")
+                print(f"""
+    {Fore.CYAN}Round {increment}""")
                 # Allow correct values with capital letters and spaces
-                user_choice = input(f"""{Fore.WHITE}\
-    What's your choice? (rock, paper, scissors):\n{Fore.YELLOW}""").lower().strip()
+                user_choice = input(f"""
+    {Fore.WHITE}What's your choice? (rock, paper, scissors):
+    {Fore.YELLOW}""").lower().strip()
                 computer_choice = random.choice(options)
                 if user_choice not in options:
                     print(f"{Fore.RED}{user_choice} is not an option")
@@ -138,9 +154,10 @@ def main():
                 else:
                     break
 
-            print(f"""{Fore.YELLOW}{user}{Fore.WHITE}
-    's choice: {Fore.YELLOW}{user_choice}""")
-            print(f"{Fore.WHITE}Computer's choice: {Fore.GREEN}{computer_choice}")
+            print(f"""
+    {Fore.YELLOW}{user}{Fore.WHITE}'s choice: {Fore.YELLOW}{user_choice}""")
+            print(f"""
+    {Fore.WHITE}Computer's choice: {Fore.GREEN}{computer_choice}""")
 
             if (user_choice == 'rock' and computer_choice == 'scissors') \
                     or (user_choice == 'paper' and computer_choice == 'rock') \
@@ -158,17 +175,20 @@ def main():
         Final score is displayed and the winner announced
         """
         points = 0  # This variable will be used for updating the scores record
-        print(f"""\n{Fore.YELLOW}{user} {Fore.WHITE}\
-    = {Fore.YELLOW}{user_score} {Fore.WHITE}
-    Computer = {Fore.GREEN}{computer_score}""")
+        print(f"""\n{Fore.YELLOW}
+    {user} {Fore.WHITE} = {Fore.YELLOW}{user_score} 
+    {Fore.WHITE}Computer = {Fore.GREEN}{computer_score}""")
         if user_score > computer_score:
-            print(f"\n{Fore.YELLOW}{user} WINS!\n")
+            print(f"""
+    {Fore.YELLOW}{user} WINS!""")
             points = 2
         elif user_score < computer_score:
-            print(f"\n{Fore.GREEN}COMPUTER WINS!\n")
+            print(f"""
+    {Fore.GREEN}COMPUTER WINS!""")
             points = 0
         else:
-            print(f"\n{Fore.WHITE}IT'S A TIE!\n")
+            print(f"""
+    {Fore.WHITE}IT'S A TIE!""")
             points = 1
         return points
 
@@ -214,13 +234,14 @@ def main():
         """
         while True:
             try:
-                print(f"""{Fore.RED}
-    TO GET THE ACCURATE SUCCESS RATE ALWAYS UPDATE YOUR SCORE""")
+                print(f"""
+    {Fore.RED}TO GET THE ACCURATE SUCCESS RATE ALWAYS UPDATE YOUR SCORE""")
                 add_score = input(f"""{Fore.WHITE}
     Would you like to proceed with updating your overall score record (y/n)?
     {Fore.YELLOW}""").lower()
                 if add_score == 'y':
-                    print(f"\n{Fore.WHITE}Updating scores record...\n")
+                    print(f"""
+    {Fore.WHITE}Updating scores record...""")
                     found = False
                     for row in all_data:
                         if user in row:
@@ -239,14 +260,16 @@ def main():
                             scores_worksheet.append_row(data)
                     if not found:
                         scores_worksheet.append_row(data)
-                    print(f"{Fore.WHITE}Scores worksheet updated successfully.\n")
+                    print(f"""
+    {Fore.WHITE}Scores worksheet updated successfully.""")
                     break
                 elif add_score == 'n':
                     return
                 else:
                     raise ValueError
             except ValueError:
-                print(f"{Fore.RED}Please select 'y' or 'n' only")
+                print(f"""
+    {Fore.RED}Please select 'y' or 'n' only""")
 
 
     def display_overall_score():
@@ -263,10 +286,13 @@ def main():
         row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
         i = 1
         # Printing the overall score
-        print(f"""\n{Fore.YELLOW}---------------------------\n{user}{Fore.WHITE}\
-    's overall score is:\n{Fore.YELLOW}---------------------------""")
+        print(f"""
+    {Fore.YELLOW}---------------------------\n
+    {user}{Fore.WHITE}'s overall score is:
+    {Fore.YELLOW}---------------------------""")
         while i < 3:
-            print(f"{headings[i]}: {Fore.YELLOW}{row_with_score[i]}")
+            print(f"""
+    {headings[i]}: {Fore.YELLOW}{row_with_score[i]}""")
             i += 1
         print(f"""{Fore.YELLOW}
     Success Rate: {row_with_score[3]}%{Fore.YELLOW}
@@ -277,14 +303,15 @@ def main():
     new_overall_score = calculate_new_score_row()
     updated_score = update_scores_record(new_overall_score)
     display_overall_score()
-    # {Fore.WHITE}Click {Fore.RED}'Start Game' \
-    # {Fore.WHITE}on the top of this page to play again""")
-    play_again = input(f"Would you like to play again (y/n):{Fore.YELLOW}\n")
+    play_again = input(f"""
+    Would you like to play again (y/n):
+    {Fore.YELLOW}""")
     if play_again == 'y':
         main()
     elif play_again == 'n':
-        print(f"""\n{Fore.WHITE}Thank you for playing, {Fore.YELLOW}{user}
-{Fore.WHITE}Bye""")
+        print(f"""
+    {Fore.WHITE}Thank you for playing, {Fore.YELLOW}{user}
+    {Fore.WHITE}Bye!""")
         quit()
         
 
