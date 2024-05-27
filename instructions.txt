@@ -1,8 +1,10 @@
 
    1. Decide on the number of rounds you want to play.
-   2. At the start of each round, the player (you) selects either rock, paper, or scissors.
+   2. At the start of each round, the player (you) selects either rock, 
+   paper, or scissors.
    3. The computer randomly selects one of rock, paper, or scissors.
-   4. Compare the player's choice with the computer's choice according to the traditional rules:
+   4. Compare the player's choice with the computer's choice according to 
+   the traditional rules:
       - Rock beats scissors
       - Scissors beats paper
       - Paper beats rock

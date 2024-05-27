@@ -33,7 +33,7 @@ def enter_user_name():
     {Fore.YELLOW}"""))
             if len(user_name) > 2:
                 print(f"""{Fore.WHITE}
-    Welcome to the game {Fore.YELLOW}{user_name}""")
+    Welcome to the game {Fore.YELLOW}{user_name}\n""")
                 break
             else:
                 raise TypeError
@@ -57,8 +57,7 @@ def show_instructions():
     while True:
         try:
             instr_choice = int(input(f"""
-    Enter '1' to read the instructions. \
-    Enter '2' to start the game:
+    Enter '1' to read the instructions. Enter '2' to start the game:
     {Fore.YELLOW}"""))
             if instr_choice == 1:
                 # Get text from the file and display
@@ -110,11 +109,11 @@ def main():
         while True:
             try:
                 number_of_rounds = int(input(f"""{Fore.WHITE}
-    How many times you want to play (max 8)?:
+    How many rounds would you like to play (max 8)?:
     {Fore.YELLOW}"""))
                 if 1 <= number_of_rounds <= 8:
                     print(f"""{Fore.WHITE}
-    You selected {Fore.YELLOW} {number_of_rounds} {Fore.WHITE}rounds""")
+    You selected {Fore.YELLOW} {number_of_rounds} {Fore.WHITE}rounds\n""")
                     break
                 else:
                     raise ValueError
@@ -142,7 +141,8 @@ def main():
             while True:
                 increment = i+1
                 print(f"""
-    {Fore.CYAN}Round {increment}""")
+    {Fore.CYAN}--------------------------------------------
+    Round {increment}""")
                 # Allow correct values with capital letters and spaces
                 user_choice = input(f"""
     {Fore.WHITE}What's your choice? (rock, paper, scissors):
@@ -175,20 +175,32 @@ def main():
         Final score is displayed and the winner announced
         """
         points = 0  # This variable will be used for updating the scores record
-        print(f"""\n{Fore.YELLOW}
-    {user} {Fore.WHITE} = {Fore.YELLOW}{user_score} 
-    {Fore.WHITE}Computer = {Fore.GREEN}{computer_score}""")
+        print(f"""
+    {Fore.CYAN}--------------------------------------------
+    
+    {Fore.YELLOW}{user} {Fore.WHITE} = {Fore.YELLOW}{user_score} 
+    {Fore.WHITE}Computer = {Fore.GREEN}{computer_score}
+    """)
         if user_score > computer_score:
             print(f"""
-    {Fore.YELLOW}{user} WINS!""")
+    
+        {Fore.YELLOW}{user} WINS!
+    
+        """)
             points = 2
         elif user_score < computer_score:
             print(f"""
-    {Fore.GREEN}COMPUTER WINS!""")
+
+        {Fore.GREEN}COMPUTER WINS!
+    
+         """)
             points = 0
         else:
             print(f"""
-    {Fore.WHITE}IT'S A TIE!""")
+
+        {Fore.WHITE}IT'S A TIE!
+        
+        """)
             points = 1
         return points
 
@@ -216,7 +228,6 @@ def main():
                 new_points_total = points_total + points
                 success_rate = round((new_points_total/(games_played*2))*100)
                 new_name_row = [user, games_played, new_points_total, success_rate]
-                print(new_name_row) # testing
                 break
         if not found:
             success_rate = round((points/2)*100)
@@ -287,7 +298,7 @@ def main():
         i = 1
         # Printing the overall score
         print(f"""
-    {Fore.YELLOW}---------------------------\n
+    {Fore.YELLOW}---------------------------
     {user}{Fore.WHITE}'s overall score is:
     {Fore.YELLOW}---------------------------""")
         while i < 3:
