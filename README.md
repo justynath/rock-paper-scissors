@@ -150,6 +150,7 @@ Below is a summary of resolved bugs:
 |--------|-----------------|--------|
 | #001   | The row within the Google Spreadsheet was not updating | Resolved |
 | #002   | The overall score is not user-friendly (displays as a dictionary) | Resolved |
+| #003   | The overall score does not update correctly when the game is replayed | Resolved |
  
 
 **Bug Details**
@@ -164,6 +165,11 @@ Here are the details of the resolved bugs:
 - **Description**:  The overall score is not user-friendly (displays as a dictionary)
 - **Resolution**: I returned the headers and values rows as lists and used zip iteration to display them clearly
 - **Impact**: The user can understand their overall score more easily
+
+**Bug #03**
+- **Description**:  The overall score does not update correctly when the game is replayed
+- **Resolution**: Moved the variable that retrieves values from the spreadsheet into the main function
+- **Impact**: The score is now updated every time the user plays the game, without needing to exit the program
 
 
 ### Python Validator Testing <a name="validator-testing"></a>
