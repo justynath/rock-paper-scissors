@@ -29,11 +29,10 @@ def enter_user_name():
     while True:
         try:
             user_name = str(input(f"""{Fore.WHITE}
-    Enter your name:
-    {Fore.YELLOW}"""))
+    Enter your name: {Fore.YELLOW}"""))
             if len(user_name) > 2:
                 print(f"""{Fore.WHITE}
-    Welcome to the game {Fore.YELLOW}{user_name}\n""")
+        Welcome to the game {Fore.YELLOW}{user_name}\n""")
                 break
             else:
                 raise TypeError
@@ -57,8 +56,7 @@ def show_instructions():
     while True:
         try:
             instr_choice = int(input(f"""
-    Enter '1' to read the instructions. Enter '2' to start the game:
-    {Fore.YELLOW}"""))
+    Enter '1' to read the instructions. Enter '2' to start the game: {Fore.YELLOW}"""))
             if instr_choice == 1:
                 # Get text from the file and display
                 f = open('instructions.txt')
@@ -70,8 +68,7 @@ def show_instructions():
                     try:
                         # Reconfirm with the user if they want to proceed
                         start_game = input(f"""
-    {Fore.WHITE}Would you like to play (y/n)?:
-    {Fore.YELLOW}""").lower()
+    {Fore.WHITE}Would you like to play (y/n)?: {Fore.YELLOW}""").lower()
                         if start_game == 'y':
                             return
                         elif start_game == 'n':
@@ -109,11 +106,10 @@ def main():
         while True:
             try:
                 number_of_rounds = int(input(f"""{Fore.WHITE}
-    How many rounds would you like to play (max 8)?:
-    {Fore.YELLOW}"""))
+    How many rounds would you like to play (max 8)?: {Fore.YELLOW}"""))
                 if 1 <= number_of_rounds <= 8:
                     print(f"""{Fore.WHITE}
-    You selected {Fore.YELLOW} {number_of_rounds} {Fore.WHITE}rounds\n""")
+        You selected {Fore.YELLOW}{number_of_rounds} {Fore.WHITE}round(s)\n""")
                     break
                 else:
                     raise ValueError
@@ -248,8 +244,7 @@ def main():
                 print(f"""
     {Fore.RED}TO GET THE ACCURATE SUCCESS RATE ALWAYS UPDATE YOUR SCORE""")
                 add_score = input(f"""{Fore.WHITE}
-    Would you like to proceed with updating your overall score record (y/n)?
-    {Fore.YELLOW}""").lower()
+    Would you like to proceed with updating your overall score record (y/n)? {Fore.YELLOW}""").lower()
                 if add_score == 'y':
                     print(f"""
     {Fore.WHITE}Updating scores record...""")
@@ -298,6 +293,7 @@ def main():
         i = 1
         # Printing the overall score
         print(f"""
+   
     {Fore.YELLOW}---------------------------
     {user}{Fore.WHITE}'s overall score is:
     {Fore.YELLOW}---------------------------""")
@@ -314,16 +310,22 @@ def main():
     new_overall_score = calculate_new_score_row()
     updated_score = update_scores_record(new_overall_score)
     display_overall_score()
-    play_again = input(f"""
-    Would you like to play again (y/n):
-    {Fore.YELLOW}""")
-    if play_again == 'y':
-        main()
-    elif play_again == 'n':
-        print(f"""
+    while True:
+        try:
+            play_again = input(f"""
+    Would you like to play again (y/n): {Fore.YELLOW}""")
+            if play_again == 'y':
+                main()
+            elif play_again == 'n':
+                print(f"""
     {Fore.WHITE}Thank you for playing, {Fore.YELLOW}{user}
     {Fore.WHITE}Bye!""")
-        quit()
-        
+                quit()
+            else:
+                raise ValueError
+        except ValueError:
+            print(f"""{Fore.RED}
+    Please select 'y' or 'n' only""")
+            continue
 
 main()
