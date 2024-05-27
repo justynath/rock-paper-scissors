@@ -16,3 +16,7 @@
    7. Once all rounds are played, determine the overall winner:
       - The player with the most points wins.
       - In case of a tie, declare the game as a draw.
+   8. The player can also update the overall score, which calculates 
+   the success rate. Each game won earns 2 points, a tie earns 1 point, 
+   and a loss earns 0 points. It is important to update the overall score 
+   to get an accurate success rate.
