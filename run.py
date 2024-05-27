@@ -119,7 +119,8 @@ def main():
                 else:
                     raise ValueError
             except ValueError:
-                print(f"{Fore.CYAN}Please enter a number between 1 and 8")
+                print(f"""
+    {Fore.CYAN}Please enter a number between 1 and 8""")
         return number_of_rounds
 
 
@@ -149,7 +150,8 @@ def main():
     {Fore.WHITE}What's your choice? (rock, paper, scissors): {Fore.YELLOW}""").lower().strip()
                 computer_choice = random.choice(options)
                 if user_choice not in options:
-                    print(f"{Fore.RED}{user_choice} is not an option")
+                    print(f"""
+    {Fore.RED}{user_choice} is not an option""")
                     continue
                 else:
                     break
@@ -206,21 +208,21 @@ def main():
         if user_score > computer_score:
             print(f"""
     
-        {Fore.GREEN}{user} WINS!
+        {Fore.GREEN}{user} WINS! - YOU EARN 2 POINTS
     
         """)
             points = 2
         elif user_score < computer_score:
             print(f"""
 
-        {Fore.GREEN}COMPUTER WINS!
+        {Fore.GREEN}COMPUTER WINS! - YOU EARN 0 POINTS
     
          """)
             points = 0
         else:
             print(f"""
 
-        {Fore.YELLOW}IT'S A TIE!
+        {Fore.YELLOW}IT'S A TIE! - YOU EARN 1 POINT
         
         """)
             points = 1
@@ -270,7 +272,7 @@ def main():
                 print(f"""
     {Fore.CYAN}TO GET THE ACCURATE SUCCESS RATE ALWAYS UPDATE YOUR SCORE""")
                 add_score = input(f"""{Fore.WHITE}
-    Would you like to proceed with updating your overall score record (y/n)? {Fore.YELLOW}""").lower()
+    Would you like to add this score to your overall score record (y/n)? {Fore.YELLOW}""").lower()
                 if add_score == 'y':
                     print(f"""
     {Fore.WHITE}Updating scores record...""")
@@ -346,7 +348,7 @@ def main():
     while True:
         try:
             play_again = input(f"""
-    Would you like to play again (y/n): {Fore.YELLOW}""").lower()
+    {Fore.WHITE}Would you like to play again (y/n): {Fore.YELLOW}""").lower()
             if play_again == 'y':
                 main()
             elif play_again == 'n':
