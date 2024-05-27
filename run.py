@@ -17,6 +17,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('scores_record')
 
+
 def enter_user_name():
     """
     Enter the user's name and validate the input with exception handling
@@ -28,8 +29,8 @@ def enter_user_name():
 
     while True:
         try:
-            user_name = str(input(f"""{Fore.WHITE}
-    Enter your name: {Fore.YELLOW}"""))
+            user_name = str(input(f"""
+    {Fore.WHITE}Enter your name: {Fore.YELLOW}"""))
             if user_name.isdigit():
                 raise TypeError
             elif len(user_name) > 2:
@@ -55,13 +56,14 @@ def show_instructions():
     If option 2, game starts
     """
     print(f"""{Fore.WHITE}
-    1. Instructions 
+    1. Instructions
     2. Play the game""")
     # Validate input, only allow 1 or 2
     while True:
         try:
             instr_choice = int(input(f"""
-    Enter '1' to read the instructions. Enter '2' to start the game: {Fore.YELLOW}"""))
+    Enter '1' to read the instructions.\
+Enter '2' to start the game: {Fore.YELLOW}"""))
             if instr_choice == 1:
                 # Get text from the file and display
                 f = open('instructions.txt')
@@ -114,7 +116,8 @@ def main():
     How many rounds would you like to play (max 8)?: {Fore.YELLOW}"""))
                 if 1 <= number_of_rounds <= 8:
                     print(f"""{Fore.WHITE}
-        You selected {Fore.MAGENTA}{number_of_rounds} {Fore.WHITE}round(s)\n""")
+        You selected {Fore.MAGENTA}{number_of_rounds}\
+{Fore.WHITE}round(s)\n""")
                     break
                 else:
                     raise ValueError
@@ -122,7 +125,6 @@ def main():
                 print(f"""
     {Fore.CYAN}Please enter a number between 1 and 8""")
         return number_of_rounds
-
 
     def play_game():
         """
@@ -147,7 +149,8 @@ def main():
     Round {increment}""")
                 # Allow correct values with capital letters and spaces
                 user_choice = input(f"""
-    {Fore.WHITE}What's your choice? (rock, paper, scissors): {Fore.YELLOW}""").lower().strip()
+    {Fore.WHITE}What's your choice? (rock, paper, scissors): \
+{Fore.YELLOW}""").lower().strip()
                 computer_choice = random.choice(options)
                 if user_choice not in options:
                     print(f"""
@@ -165,7 +168,8 @@ def main():
     {Fore.YELLOW}Tie""")
             if (user_choice == 'rock' and computer_choice == 'scissors') \
                     or (user_choice == 'paper' and computer_choice == 'rock') \
-                    or (user_choice == 'scissors' and computer_choice == 'paper'):
+                    or \
+                    (user_choice == 'scissors' and computer_choice == 'paper'):
                 user_score += 1
                 if user_choice == 'rock' and computer_choice == 'scissors':
                     print(f"""
@@ -177,8 +181,10 @@ def main():
                     print(f"""
     {Fore.GREEN}{user} cuts computer""")
             elif (user_choice == 'rock' and computer_choice == 'paper') \
-                    or (user_choice == 'paper' and computer_choice == 'scissors') \
-                    or (user_choice == 'scissors' and computer_choice == 'rock'):
+                    or \
+                    (user_choice == 'paper' and computer_choice == 'scissors')\
+                    or \
+                    (user_choice == 'scissors' and computer_choice == 'rock'):
                 computer_score += 1
                 if user_choice == 'rock' and computer_choice == 'paper':
                     print(f"""
@@ -191,7 +197,6 @@ def main():
     {Fore.RED}Computer smashes {user}""")
         return user_score, computer_score
 
-
     def display_score():
         """
         Final score is displayed and the winner announced
@@ -199,37 +204,36 @@ def main():
         points = 0  # This variable will be used for updating the scores record
         print(f"""
     {Fore.WHITE}-----------------------------------------------------
-    
+
     {Fore.CYAN}GAMEOVER
 
-    {Fore.WHITE}{user} = {Fore.MAGENTA}{user_score} 
+    {Fore.WHITE}{user} = {Fore.MAGENTA}{user_score}
     {Fore.WHITE}Computer = {Fore.CYAN}{computer_score}
     """)
         if user_score > computer_score:
             print(f"""
-    
+
         {Fore.GREEN}{user} WINS! - YOU EARN 2 POINTS
-    
+
         """)
             points = 2
         elif user_score < computer_score:
             print(f"""
 
         {Fore.GREEN}COMPUTER WINS! - YOU EARN 0 POINTS
-    
+
          """)
             points = 0
         else:
             print(f"""
 
         {Fore.YELLOW}IT'S A TIE! - YOU EARN 1 POINT
-        
+
         """)
             points = 1
         return points
 
     user_score, computer_score = play_game()
-
 
     def calculate_new_score_row():
         """
@@ -251,13 +255,13 @@ def main():
                 points_total = int(name_row[2])
                 new_points_total = points_total + points
                 success_rate = round((new_points_total/(games_played*2))*100)
-                new_name_row = [user, games_played, new_points_total, success_rate]
+                new_name_row = \
+                    [user, games_played, new_points_total, success_rate]
                 break
         if not found:
             success_rate = round((points/2)*100)
             new_name_row = [user, 1, points, success_rate]
         return new_name_row
-
 
     def update_scores_record(data):
         """
@@ -270,9 +274,11 @@ def main():
         while True:
             try:
                 print(f"""
-    {Fore.CYAN}TO GET THE ACCURATE SUCCESS RATE ALWAYS UPDATE YOUR SCORE""")
+    {Fore.CYAN}TO GET THE ACCURATE SUCCESS RATE ALWAYS UPDATE YOUR SCORE
+    (GAME WON - 2 POINTS, TIE - 1 POINT, GAME LOST - 0 POINTS)""")
                 add_score = input(f"""{Fore.WHITE}
-    Would you like to add this score to your overall score record (y/n)? {Fore.YELLOW}""").lower()
+    Would you like to add this score to your overall score record (y/n)? \
+{Fore.YELLOW}""").lower()
                 if add_score == 'y':
                     print(f"""
     {Fore.WHITE}Updating scores record...""")
@@ -289,7 +295,7 @@ def main():
                             # Remove the part from 'c' until the end.
                             # Return an integer with any number of digits
                             find_row_num = int(split_cell.rsplit('C')[0])
-                            # Delete the existing row and add new row with new data
+                            # Delete the existing row and add new row
                             scores_worksheet.delete_rows(find_row_num)
                             scores_worksheet.append_row(data)
                     if not found:
@@ -305,7 +311,6 @@ def main():
                 print(f"""
     {Fore.CYAN}Please select 'y' or 'n' only""")
 
-
     def display_overall_score():
         """
         Function to display current overall score from the google sheet
@@ -314,7 +319,7 @@ def main():
         found = False
         for row in new_all_data:
             if user in row:
-                found == True
+                found = True
                 # Get the headings from the scores worksheet's first row
                 headings = SHEET.worksheet("scores").row_values(1)
                 # Finding the row number where the values are
@@ -322,24 +327,24 @@ def main():
                 cell_string = str(cell)
                 split_cell = str(cell_string.split('<Cell R')[1])
                 find_row_num = int(split_cell.rsplit('C')[0])
-                row_with_score = SHEET.worksheet("scores").row_values(find_row_num)
+                row_with_score = \
+                    SHEET.worksheet("scores").row_values(find_row_num)
                 i = 1
                 # Printing the overall score
                 print(f"""
-        
+
         {Fore.MAGENTA}---------------------------
-        {user}{Fore.WHITE}'s overall score is:
+        {Fore.WHITE}{user}'s overall score is:
         {Fore.MAGENTA}---------------------------""")
                 while i < 3:
                     print(f"""
         {headings[i]}: {Fore.MAGENTA}{row_with_score[i]}""")
                     i += 1
-                print(f"""{Fore.MAGENTA}
-        Success Rate: {row_with_score[3]}%
+                print(f"""
+        {Fore.WHITE}Success Rate: {Fore.MAGENTA}{row_with_score[3]}%
         ---------------------------\n""")
         if not found:
             return
-
 
     points = display_score()
     new_overall_score = calculate_new_score_row()
@@ -362,5 +367,6 @@ def main():
             print(f"""{Fore.CYAN}
     Please select 'y' or 'n' only""")
             continue
+
 
 main()
