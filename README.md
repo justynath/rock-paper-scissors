@@ -76,7 +76,7 @@ The user has an option to read the instructions or start the game. After the ins
 **Play Game**
 
 The user is asked to chose how many rounds they want to play this game. The user is asked to select option. The user's option and computer's option are displayed. Repeats until selected number of rounds.
-![instructions](./readme-files/play-game.png)
+![play game](./readme-files/play-game.png)
 
 **Finish Game**
 
@@ -85,7 +85,7 @@ End of game. The winner is announced and the user is promped to update their sco
 
 **Display current score**
 
-The current score including the success rate is displayed. The user is asked if they want to play again.
+The current score including the success rate is displayed. The user is asked if they want to play again. The user has an option to play again without exiting the program
 ![display score](./readme-files/display-score.png)
 
 
