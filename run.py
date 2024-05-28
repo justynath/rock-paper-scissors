@@ -40,7 +40,7 @@ def enter_user_name():
                 raise TypeError
             elif len(user_name) > 2:
                 print(f"""{Fore.WHITE}
-        Welcome to the game {Fore.MAGENTA}{user_name}\n""")
+        Welcome to the game {Fore.GREEN}{user_name}\n""")
                 break
             else:
                 raise ValueError
@@ -121,7 +121,7 @@ def main():
     How many rounds would you like to play (max 8)?: {Fore.YELLOW}"""))
                 if 1 <= number_of_rounds <= 8:
                     print(f"""{Fore.WHITE}
-        You selected {Fore.MAGENTA}{number_of_rounds}\
+        You selected {Fore.GREEN}{number_of_rounds} \
 {Fore.WHITE}round(s)\n""")
                     break
                 else:
@@ -151,7 +151,7 @@ def main():
                 increment = i+1
                 print(f"""
     {Fore.WHITE}-----------------------------------------------------
-    Round {increment}""")
+    {Fore.WHITE}Round {increment}""")
                 # Allow correct values with capital letters and spaces
                 user_choice = input(f"""
     {Fore.WHITE}What's your choice? (rock, paper, scissors): \
@@ -164,7 +164,7 @@ def main():
                 else:
                     break
             print(f"""\n
-    {Fore.WHITE}{user}'s choice: {Fore.MAGENTA}{user_choice}""")
+    {Fore.WHITE}{user}'s choice: {Fore.GREEN}{user_choice}""")
             print(f"""
     {Fore.WHITE}Computer's choice: {Fore.CYAN}{computer_choice}""")
             if user_choice == computer_choice:
@@ -211,7 +211,7 @@ def main():
 
     {Fore.CYAN}GAMEOVER
 
-    {Fore.WHITE}{user} = {Fore.MAGENTA}{user_score}
+    {Fore.WHITE}{user} = {Fore.GREEN}{user_score}
     {Fore.WHITE}Computer = {Fore.CYAN}{computer_score}
     """)
         if user_score > computer_score:
@@ -342,11 +342,11 @@ def main():
         {Fore.MAGENTA}---------------------------""")
                 while i < 3:
                     print(f"""
-        {headings[i]}: {Fore.MAGENTA}{row_with_score[i]}""")
+        {headings[i]}: {Fore.GREEN}{row_with_score[i]}""")
                     i += 1
                 print(f"""
-        {Fore.WHITE}Success Rate: {Fore.MAGENTA}{row_with_score[3]}%
-        ---------------------------\n""")
+        {Fore.WHITE}Success Rate: {Fore.GREEN}{row_with_score[3]}%
+        {Fore.MAGENTA}---------------------------\n""")
         if not found:
             return
 
@@ -362,7 +362,7 @@ def main():
                 main()
             elif play_again == 'n':
                 print(f"""
-    {Fore.WHITE}Thank you for playing, {Fore.MAGENTA}{user}
+    {Fore.WHITE}Thank you for playing, {Fore.GREEN}{user}
     {Fore.WHITE}Bye!""")
                 quit()
             else:
