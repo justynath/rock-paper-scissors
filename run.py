@@ -6,11 +6,16 @@ from colorama import Fore
 
 colorama.init(autoreset=True)
 
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
+
+# Try to connect to Googlesheets, if error notify user
+try:
+    SCOPE = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive.file",
+        "https://www.googleapis.com/auth/drive"
+        ]
+except FileNotFoundError:
+    print("Error: please refresh the browser\n")
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -158,7 +163,6 @@ def main():
                     continue
                 else:
                     break
-
             print(f"""\n
     {Fore.WHITE}{user}'s choice: {Fore.MAGENTA}{user_choice}""")
             print(f"""
@@ -220,7 +224,7 @@ def main():
         elif user_score < computer_score:
             print(f"""
 
-        {Fore.GREEN}COMPUTER WINS! - YOU EARN 0 POINTS
+        {Fore.RED}COMPUTER WINS! - YOU EARN 0 POINTS
 
          """)
             points = 0
